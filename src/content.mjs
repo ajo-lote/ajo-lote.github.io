@@ -151,12 +151,15 @@ export const T = {
         summary: "Redesign of a client portal around its most frequent user: the accountant on the client's finance team.",
         intro:
           "Brel is a Mexican boutique leasing company with more than 15 years of operation. Its premium positioning wasn't reflected in its client portal. The goal was to redesign the platform around its main user, rebuild the information architecture around tasks and raise the visual quality.",
+        introImg: "brel-intro.webp",
         sections: [
           {
             h: "The problem",
             p: [
               "The portal mixed the needs of the CEO, accounting and operations. The most frequent user was the client's finance team, mostly accountants around 50, and the hierarchy didn't follow their workflow. The design also felt generic for a premium brand.",
             ],
+            carousel: true,
+            img: ["brel-problem-1.webp", "brel-problem-2.webp", "brel-problem-3.webp"],
           },
           {
             h: "Information architecture",
@@ -297,12 +300,14 @@ export const T = {
         summary: "A multi-company, role-based platform designed on top of an existing design system and an almost frozen backend.",
         intro:
           "Nea is a corporate platform and card for finance teams, later extended to transport companies with large fleets, daily routes and decentralized operations. My work covered the web platform's design on top of an existing design system.",
+        introImg: "nea-intro.webp",
         sections: [
           {
             h: "The problem",
             p: [
               "Moving into transport exposed poor usability for non-technical users, flows that didn't fit routes, per diems and field work, visual inconsistencies, fragmented information and no native support for teams or multiple companies. Clients used spreadsheets to compensate.",
             ],
+            img: ["nea-problem.webp"],
           },
           {
             h: "Constraints",
@@ -313,40 +318,48 @@ export const T = {
               "Several roles (admin, accounting, operators, cardholders) needing different views of the same entities.",
               "Multi-company support as a critical need, with no native data model for it.",
             ],
+            carousel: true,
+            img: ["nea-constraints-1.webp", "nea-constraints-2.webp", "nea-constraints-3.webp"],
           },
           {
             h: "Design principles",
             list: ["Simplify for non-technical users.", "Differentiate experiences by role.", "Build new logic on the existing infrastructure."],
+            img: ["nea-strategy.webp"],
           },
           {
             h: "Multi-company",
             p: [
               "A persistent company selector switches the context of the whole platform while keeping the current module, filters and views.",
             ],
+            img: ["nea-multicompany.webp"],
           },
           {
             h: "Budgets",
             p: [
               "Modeled as a hierarchy: Company → Area → Operator or Team → Card. The creation flow covers basic setup, rules and permissions, members, duration and recurrence, and a final review on mobile and desktop. The detail view shows available versus spent, category breakdowns, members, linked transactions and controlled adjustments.",
             ],
+            img: ["nea-budgets-1.webp", "nea-budgets-2.webp", "nea-budgets-3.webp"],
           },
           {
             h: "Transactions",
             p: [
               "Organized into Purchases, Commissions and Deposits. Purchase details have normal, expanded and rejected states, with the rejection cause stated explicitly. Accounting gets custom fields, accounting metadata and XML (SAT) management inside the same flow.",
             ],
+            img: ["nea-transactions-1.webp", "nea-transactions-2.webp", "nea-transactions-3.webp"],
           },
           {
             h: "Design system",
             p: [
               "Unified form and state patterns, table and hierarchy variants, subtle role accents and mobile-first components for field use, with fewer one-off styles.",
             ],
+            img: ["nea-system.webp"],
           },
           {
             h: "Impact",
             p: [
               "Transport clients could model their operations, and operators and admins better understood spending rules. Transaction and XML review became part of period closing. The design system reduced visual patching, support reported fewer questions and sales had a clearer story for acquisition. I didn't measure ticket reduction or training time rigorously, and I'd call that out as a limitation.",
             ],
+            img: ["nea-impact.webp"],
           },
         ],
         hero: ["nea-01-hero.webp"],
@@ -493,12 +506,15 @@ export const T = {
         summary: "Rediseño de un portal de clientes alrededor de su usuaria más frecuente: la contadora del equipo financiero del cliente.",
         intro:
           "Brel es una arrendadora boutique mexicana con más de 15 años de operación. Su posicionamiento premium no se reflejaba en su portal de clientes. El objetivo fue rediseñar la plataforma alrededor de su usuario principal, reconstruir la arquitectura de información según las tareas y elevar la calidad visual.",
+        introImg: "brel-intro.webp",
         sections: [
           {
             h: "El problema",
             p: [
               "El portal mezclaba las necesidades del director general, contabilidad y operación. Quien más lo usaba era el equipo financiero del cliente, sobre todo contadoras de alrededor de 50 años, y la jerarquía no seguía su flujo de trabajo. Además, el diseño se sentía genérico para una marca premium.",
             ],
+            carousel: true,
+            img: ["brel-problem-1.webp", "brel-problem-2.webp", "brel-problem-3.webp"],
           },
           {
             h: "Arquitectura de información",
@@ -639,12 +655,14 @@ export const T = {
         summary: "Una plataforma multiempresa y por roles, diseñada sobre un sistema de diseño existente y un backend casi congelado.",
         intro:
           "Nea es una plataforma corporativa y tarjeta para equipos de finanzas, que luego se extendió a empresas de transporte con grandes flotas, rutas diarias y operación descentralizada. Mi trabajo cubrió el diseño de la plataforma web sobre un sistema de diseño existente.",
+        introImg: "nea-intro.webp",
         sections: [
           {
             h: "El problema",
             p: [
               "Entrar a transporte expuso mala usabilidad para usuarios no técnicos, flujos que no se ajustaban a rutas, viáticos y trabajo en campo, inconsistencias visuales, información fragmentada y ningún soporte nativo para equipos o varias empresas. Los clientes compensaban con hojas de cálculo.",
             ],
+            img: ["nea-problem.webp"],
           },
           {
             h: "Restricciones",
@@ -655,40 +673,48 @@ export const T = {
               "Varios roles (admin, contabilidad, operadores, tarjetahabientes) que necesitan vistas distintas de las mismas entidades.",
               "Multiempresa como necesidad crítica, sin modelo de datos nativo para ello.",
             ],
+            carousel: true,
+            img: ["nea-constraints-1.webp", "nea-constraints-2.webp", "nea-constraints-3.webp"],
           },
           {
             h: "Principios de diseño",
             list: ["Simplificar para usuarios no técnicos.", "Diferenciar las experiencias por rol.", "Construir la lógica nueva sobre la infraestructura existente."],
+            img: ["nea-strategy.webp"],
           },
           {
             h: "Multiempresa",
             p: [
               "Un selector de empresa persistente cambia el contexto de toda la plataforma y conserva el módulo, los filtros y las vistas actuales.",
             ],
+            img: ["nea-multicompany.webp"],
           },
           {
             h: "Presupuestos",
             p: [
               "Modelados como una jerarquía: Empresa → Área → Operador o Equipo → Tarjeta. El flujo de creación cubre configuración básica, reglas y permisos, integrantes, duración y recurrencia, y una revisión final en móvil y escritorio. La vista de detalle muestra disponible contra gastado, desglose por categoría, integrantes, movimientos vinculados y ajustes controlados.",
             ],
+            img: ["nea-budgets-1.webp", "nea-budgets-2.webp", "nea-budgets-3.webp"],
           },
           {
             h: "Movimientos",
             p: [
               "Organizados en Compras, Comisiones y Depósitos. El detalle de una compra tiene estados normal, expandido y rechazado, con la causa del rechazo explícita. Contabilidad cuenta con campos personalizados, metadatos contables y gestión de XML (SAT) dentro del mismo flujo.",
             ],
+            img: ["nea-transactions-1.webp", "nea-transactions-2.webp", "nea-transactions-3.webp"],
           },
           {
             h: "Sistema de diseño",
             p: [
               "Patrones unificados de formularios y estados, variantes de tablas y jerarquías, acentos sutiles por rol y componentes mobile-first para uso en campo, con menos estilos aislados.",
             ],
+            img: ["nea-system.webp"],
           },
           {
             h: "Impacto",
             p: [
               "Los clientes de transporte pudieron modelar su operación, y operadores y administradores entendieron mejor las reglas de gasto. La revisión de movimientos y XML pasó a formar parte del cierre de periodo. El sistema de diseño redujo los parches visuales, soporte reportó menos preguntas y ventas contó con una narrativa más clara. No medí con rigor la reducción de tickets ni el tiempo de capacitación, y lo señalo como una limitación.",
             ],
+            img: ["nea-impact.webp"],
           },
         ],
         hero: ["nea-01-hero.webp"],

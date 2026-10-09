@@ -189,9 +189,15 @@ ${brandThumbs(lang)}
         const paras = (s.p || []).map((x) => `<p>${esc(x)}</p>`).join("");
         const list = s.list ? `<ul class="list">${s.list.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
         const figs = (s.img || []).map((f) => productImg(f)).filter(Boolean).map((u) => `<figure><img src="${u}" alt="${esc(s.h)} — ${esc(c.title)}" loading="lazy" decoding="async"></figure>`).join("");
-        return `<section class="case-sec">${figs ? `<div class="figs">${figs}</div>` : ""}<div class="txt"><h2>${esc(s.h)}</h2>${paras}${list}</div></section>`;
+        const nImg = (s.img || []).map((f) => productImg(f)).filter(Boolean).length;
+        const figsHtml = !figs ? "" : s.carousel && nImg > 1
+          ? `<div class="carousel" data-carousel><div class="figs track" tabindex="0" aria-label="${esc(s.h)}">${figs}</div><div class="car-nav"><button type="button" data-dir="-1" aria-label="${lang === "es" ? "Anterior" : "Previous"}">←</button><span class="car-count" aria-live="polite">1 / ${nImg}</span><button type="button" data-dir="1" aria-label="${lang === "es" ? "Siguiente" : "Next"}">→</button></div></div>`
+          : `<div class="figs">${figs}</div>`;
+        return `<section class="case-sec">${figsHtml}<div class="txt"><h2>${esc(s.h)}</h2>${paras}${list}</div></section>`;
       })
       .join("");
+    const introU = c.introImg ? productImg(c.introImg) : null;
+    const introFig = introU ? `<figure class="intro-fig"><img src="${introU}" alt="${esc(c.title)}" loading="lazy" decoding="async"></figure>` : "";
     const figma = SHOW_PROTOTYPES && c.figma ? `<p style="margin-top:20px"><a class="btn ghost" href="${SITE.figmaBrel}" rel="noopener" target="_blank">${esc(t.product.figma)}</a></p>` : "";
     const protoUrl = SHOW_PROTOTYPES && c.figma ? SITE.figmaBrel.replace("https://www.figma.com/", "https://embed.figma.com/") + "&embed-host=share" : null;
     const proto = protoUrl ? `<section class="case-sec wide"><div class="figs"><div class="proto"><iframe src="${protoUrl}" title="${esc(c.title)} — ${esc(t.product.protoH)}" loading="lazy" allowfullscreen></iframe></div></div><div class="txt"><h2>${esc(t.product.protoH)}</h2><p class="muted">${esc(t.product.protoNote)}</p></div></section>` : "";
@@ -204,9 +210,10 @@ ${brandThumbs(lang)}
 <p class="lede">${esc(c.sub)}</p>
 ${hero ? `<div class="case-hero" style="margin-top:36px"><img src="${hero}" alt="${esc(c.title)}" decoding="async"></div>` : `<div class="case-hero block ${c.light ? "on-dark" : ""}" style="background:${c.color};margin-top:36px"><span class="name">${esc(c.year)}</span></div>`}
 <dl class="meta">${metaRows}</dl>
-<p class="case-intro">${esc(c.intro)}</p>${figma}
+<p class="case-intro">${esc(c.intro)}</p>${figma}${introFig}
 </div></section>
 <div class="wrap narrow">${proto}${sections}
+<script>(function(){document.querySelectorAll("[data-carousel]").forEach(function(c){var t=c.querySelector(".track"),n=c.querySelectorAll("figure").length,k=c.querySelector(".car-count");function i(){return Math.round(t.scrollLeft/t.clientWidth)}function u(){k.textContent=(i()+1)+" / "+n}t.addEventListener("scroll",u,{passive:true});c.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){t.scrollTo({left:(i()+Number(b.dataset.dir))*t.clientWidth,behavior:"smooth"})})});t.addEventListener("keydown",function(e){if(e.key==="ArrowRight")t.scrollBy({left:t.clientWidth,behavior:"smooth"});if(e.key==="ArrowLeft")t.scrollBy({left:-t.clientWidth,behavior:"smooth"})})})})();</script>
 <div class="case-next"><span class="eyebrow">${esc(t.product.next)}</span><a class="big" href="/${lang}/product/${nextKey}/">${esc(next.title)} →</a></div></div>`,
       cls: "case",
     });
