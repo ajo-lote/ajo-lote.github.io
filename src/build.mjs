@@ -190,6 +190,8 @@ ${brandThumbs(lang)}
       })
       .join("");
     const figma = c.figma ? `<p style="margin-top:20px"><a class="btn ghost" href="${SITE.figmaBrel}" rel="noopener" target="_blank">${esc(t.product.figma)}</a></p>` : "";
+    const protoUrl = c.figma ? SITE.figmaBrel.replace("https://www.figma.com/", "https://embed.figma.com/") + "&embed-host=share" : null;
+    const proto = protoUrl ? `<section class="case-sec wide"><h2>${esc(t.product.protoH)}</h2><div class="body"><div class="proto"><iframe src="${protoUrl}" title="${esc(c.title)} — ${esc(t.product.protoH)}" loading="lazy" allowfullscreen></iframe></div><p class="muted" style="font-size:14px">${esc(t.product.protoNote)}</p></div></section>` : "";
     page({
       lang, rel: `/product/${key}/`, active: "product",
       title: `${c.title} — ${c.sub} · Diana Becerra`, desc: c.summary,
@@ -201,7 +203,7 @@ ${hero ? `<div class="case-hero" style="margin-top:36px"><img src="${hero}" alt=
 <dl class="meta">${metaRows}</dl>
 <p class="case-intro">${esc(c.intro)}</p>${figma}
 </div></section>
-<div class="wrap">${sections}
+<div class="wrap">${proto}${sections}
 <div class="case-next"><span class="eyebrow">${esc(t.product.next)}</span><a class="big" href="/${lang}/product/${nextKey}/">${esc(next.title)} →</a></div></div>`,
     });
   });
@@ -257,20 +259,76 @@ ${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change",
 
   // About
   const a = t.about;
+  const photoGrid = (prefix) =>
+    Array.from({ length: 8 }, (_, i) => {
+      const rel = `uploads/about/${prefix}-0${i + 1}.webp`;
+      if (exists(rel)) return `<li><img src="/${rel}" alt="" loading="lazy" decoding="async"></li>`;
+      missing.add(rel);
+      return `<li class="ph" aria-hidden="true"></li>`;
+    }).join("");
   page({
     lang, rel: "/about/", active: "about", title: a.title, desc: a.desc,
-    body: `<section class="page-head"><div class="wrap">
+    body: `<section class="page-head" style="padding-bottom:0"><div class="wrap about-wrap">
 <p class="eyebrow">${esc(a.kicker)}</p>
-<h1 class="display" style="max-width:16em">${a.h1}</h1>
+<h1 class="display statement" data-reveal>${a.h1}</h1>
 </div></section>
-<section class="section" style="padding-top:0;border-top:0"><div class="wrap">
-<div class="about-grid">
-<div class="about-photo"><img src="/uploads/IMG_8695.webp" alt="Diana Becerra" decoding="async"></div>
-<div class="about-body"><p class="lede">${esc(a.p1)}</p><p>${esc(a.p2)}</p><p>${esc(a.p3)}</p><p>${esc(a.p4)}</p><p><a href="/${lang}/brand/">${esc(a.brandLink)}</a></p></div>
-</div>
-<div class="facts">${a.facts.map((f) => `<div><p class="l">${esc(f.l)}</p><p class="v">${esc(f.v)}</p><p class="s">${esc(f.s)}</p></div>`).join("")}</div>
-<div class="toolkit"><p class="eyebrow">${esc(a.toolkitH)}</p><ul>${a.toolkit.map(([n, r]) => `<li>${esc(n)}<span>${esc(r)}</span></li>`).join("")}</ul></div>
-</div></section>`,
+<section class="section nb"><div class="wrap about-wrap">
+<div class="about-intro"><div class="about-photo small"><img src="/uploads/IMG_8695.webp" alt="Diana Becerra" decoding="async"></div>
+<div class="about-body"><p class="lede">${esc(a.p1)}</p><p>${esc(a.p2)}</p></div></div>
+</div></section>
+<section class="section nb"><div class="wrap about-wrap">
+<p class="line">${esc(a.museumsLine)}</p>
+<ul class="pgrid">${photoGrid("museum")}</ul>
+<p class="line-link"><a href="/lab/art-library/">${esc(a.museumsLink)}</a></p>
+</div></section>
+<section class="section nb"><div class="wrap about-wrap">
+<p class="line">${esc(a.natureLine)}</p>
+<ul class="pgrid">${photoGrid("nature")}</ul>
+</div></section>
+<section class="section nb"><div class="wrap about-wrap">
+<p class="eyebrow" style="margin-bottom:18px">${t.nav.about === "About" ? "Experience" : "Experiencia"}</p>
+<p class="statement2" data-reveal>${a.expH}</p>
+<p class="about-p3">${esc(a.p3)}</p>
+<p><a href="/${lang}/brand/">${esc(a.brandLink)}</a></p>
+</div></section>
+<section class="section nb"><div class="wrap about-wrap">
+<p class="eyebrow" style="margin-bottom:8px">${esc(a.toolkitH)}</p>
+<ul class="tk">${a.toolkit.map(([n, r, c]) => `<li><span class="logo" style="background:${c}" aria-hidden="true">${esc(n[0])}</span><span><b>${esc(n)}</b><small>${esc(r)}</small></span></li>`).join("")}</ul>
+</div></section>
+<script>
+(function () {
+  try {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var els = [].slice.call(document.querySelectorAll("[data-reveal]"));
+    var groups = els.map(function (el) {
+      var words = [];
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      var nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(function (n) {
+        var parts = n.textContent.split(/(\\s+)/), frag = document.createDocumentFragment();
+        parts.forEach(function (p) {
+          if (!p) return;
+          if (/^\\s+$/.test(p)) { frag.appendChild(document.createTextNode(p)); return; }
+          var sp = document.createElement("span"); sp.className = "w"; sp.textContent = p; frag.appendChild(sp); words.push(sp);
+        });
+        n.parentNode.replaceChild(frag, n);
+      });
+      return { el: el, words: words };
+    });
+    document.documentElement.classList.add("js-reveal");
+    function update() {
+      var h = window.innerHeight;
+      groups.forEach(function (g) {
+        var r = g.el.getBoundingClientRect();
+        var prog = (h * 0.9 - r.top) / (r.height + h * 0.35);
+        var lit = Math.round(Math.max(0, Math.min(1, prog)) * g.words.length * 1.15);
+        g.words.forEach(function (w, i) { w.classList.toggle("on", i < lit); });
+      });
+    }
+    update(); window.addEventListener("scroll", update, { passive: true }); window.addEventListener("resize", update);
+  } catch (e) {}
+})();
+</script>`,
   });
 
   // Contact
