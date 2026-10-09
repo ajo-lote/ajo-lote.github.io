@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biblioteca de arte — Lab · Diana Becerra</title>
+<meta name="description" content="Historia del arte organizada por contexto: categorías, movimientos y sus exponentes. 130 artistas en 12 periodos, con las artistas mujeres marcadas.">
+<meta name="theme-color" content="#F6F0DE">
+<link rel="canonical" href="https://dianabecerra.design/lab/art-library/">
+<link rel="icon" type="image/png" href="/uploads/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  .lib { max-width: 820px; margin: 0 auto; padding: 0 var(--pad); }
+  .lib-search { width: 100%; max-width: 360px; padding: 11px 14px; border: 1.5px solid var(--tinta); border-radius: 999px; background: var(--papel); font: inherit; font-size: 15px; color: var(--tinta); }
+  .lib-search::placeholder { color: var(--muted); }
+  .timeline { position: relative; margin-top: 36px; }
+  .timeline::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+  .era { position: relative; padding-left: 52px; }
+  .era-btn { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 12px; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 6px 0 22px; cursor: pointer; text-align: left; color: inherit; font: inherit; }
+  .era-dot { position: absolute; left: 0; top: 2px; width: 32px; height: 32px; border-radius: 50%; border: 2px solid #C7C2B6; background: var(--papel); pointer-events: none; transition: background .25s, border-color .25s; }
+  .era.open .era-dot { background: var(--c); border-color: var(--c); }
+  .era-range { display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; color: var(--muted); }
+  .era-name { font-family: var(--serif); font-size: 24px; line-height: 1.2; }
+  .era-plus { font-size: 22px; color: var(--c); transition: transform .25s; flex-shrink: 0; }
+  .era.open .era-plus { transform: rotate(45deg); }
+  .era-panel { display: none; padding: 18px 0 34px; }
+  .era.open .era-panel { display: block; }
+  .era-context { max-width: 36em; color: #3B382F; margin-bottom: 26px; }
+  .mov { margin-bottom: 26px; }
+  .mov h3 { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta); margin-bottom: 14px; }
+  .mov h3 span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-right: 8px; }
+  .artists { display: grid; grid-template-columns: 1fr; gap: 16px 24px; }
+  @media (min-width: 760px) { .artists { grid-template-columns: 1fr 1fr; } }
+  .artist { display: flex; gap: 12px; align-items: flex-start; }
+  .av { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--c); color: #fff; font-family: var(--serif); font-size: 18px; padding: 0; border: 0; overflow: hidden; }
+  button.av { border: 2px solid var(--c); background: none; cursor: pointer; }
+  button.av img { width: 100%; height: 100%; object-fit: cover; }
+  .artist .n { font-weight: 600; font-size: 15px; }
+  .artist .n i { font-style: normal; color: var(--c); }
+  .artist .w { font-size: 14px; color: var(--muted); line-height: 1.4; }
+  .artist .note { font-size: 13px; font-style: italic; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+  .empty { margin-top: 40px; color: var(--muted); }
+  dialog.lb { border: 0; padding: 0; background: transparent; max-width: min(92vw, 640px); }
+  dialog.lb::backdrop { background: rgba(17,17,17,.88); }
+  dialog.lb img { max-height: 68vh; width: auto; margin: 0 auto; border-radius: 4px; }
+  dialog.lb .cap { color: var(--papel); padding-top: 14px; display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+  dialog.lb .cap p { margin: 0; }
+  dialog.lb .cap .a { font-family: var(--serif); font-size: 18px; }
+  dialog.lb .cap .o { font-size: 14px; color: #CFC9B8; }
+  dialog.lb .cap .c { font-size: 13px; font-style: italic; color: #A8A292; margin-top: 6px; max-width: 30em; }
+  dialog.lb button { background: none; border: 1px solid #888; color: var(--papel); border-radius: 999px; padding: 6px 14px; cursor: pointer; font: inherit; font-size: 13px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="/es/">Diana <em>Becerra</em></a>
+  <nav class="nav" aria-label="Principal">
+    <a href="/es/product/">Producto</a>
+    <a href="/es/lab/" aria-current="page">Lab</a>
+    <a href="/es/about/">Sobre mí</a>
+    <a href="/es/contact/">Contacto</a>
+    <a class="lang" href="/en/lab/" hreflang="en" lang="en" aria-label="English">EN</a>
+  </nav>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="lib">
+    <p class="eyebrow"><a href="/es/lab/" style="text-decoration:none">← Lab</a> &nbsp;·&nbsp; Experimento</p>
+    <h1 class="display">Categorías, movimientos y <em>sus exponentes</em>.</h1>
+    <p class="lede">Historia del arte organizada por contexto: sociedad, tecnología, naturaleza. Las artistas mujeres están marcadas con ♀. <span class="muted">(The interface is in Spanish.)</span></p>
+  </div></section>
+  <section class="section" style="padding-top:0;border-top:0"><div class="lib">
+    <label class="eyebrow" for="q" style="display:block;margin-bottom:10px">Buscar</label>
+    <input id="q" class="lib-search" type="search" placeholder="Artista u obra…" autocomplete="off">
+    <div id="tl" class="timeline" aria-live="polite"></div>
+    <p id="empty" class="empty" hidden>No hay resultados para esa búsqueda.</p>
+  </div></section>
+</main>
+<dialog class="lb" id="lb" aria-label="Imagen ampliada">
+  <img id="lb-img" alt="">
+  <div class="cap"><div><p class="a" id="lb-a"></p><p class="o" id="lb-o"></p><p class="c" id="lb-c"></p></div><button type="button" id="lb-x">Cerrar</button></div>
+</dialog>
+<footer class="site-footer"><div class="wrap">
+  <span>© 2026 Diana Becerra · Guadalajara, MX</span>
+  <span><a href="/es/lab/">Volver al Lab</a></span>
+</div></footer>
+<script>
+(function () {
+  var cats = [], open = "antiguo", q = "";
+  var tl = document.getElementById("tl"), empty = document.getElementById("empty");
+  var lb = document.getElementById("lb");
+  function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function showImg(a) {
+    document.getElementById("lb-img").src = a.img;
+    document.getElementById("lb-img").alt = a.name + " — " + a.work;
+    document.getElementById("lb-a").textContent = a.name;
+    document.getElementById("lb-o").textContent = a.work;
+    document.getElementById("lb-c").textContent = a.imgCaption || "";
+    if (lb.showModal) lb.showModal(); else lb.setAttribute("open", "");
+  }
+  function render() {
+    tl.textContent = "";
+    var shown = 0, nq = norm(q);
+    cats.forEach(function (c) {
+      var movs = c.movements.map(function (m) {
+        return { name: m.name, artists: m.artists.filter(function (a) { return !nq || norm(a.name).indexOf(nq) > -1 || norm(a.work).indexOf(nq) > -1; }) };
+      }).filter(function (m) { return m.artists.length; });
+      if (nq && !movs.length) return;
+      shown++;
+      var isOpen = nq ? true : open === c.id;
+      var era = el("div", "era" + (isOpen ? " open" : ""));
+      era.style.setProperty("--c", c.color);
+      era.appendChild(el("span", "era-dot"));
+      var btn = el("button", "era-btn"); btn.type = "button"; btn.setAttribute("aria-expanded", isOpen);
+      var left = el("span"); left.appendChild(el("span", "era-range", c.range)); left.appendChild(el("span", "era-name", c.name));
+      btn.appendChild(left); btn.appendChild(el("span", "era-plus", "+"));
+      btn.addEventListener("click", function () { open = (open === c.id && !nq) ? null : c.id; render(); });
+      era.appendChild(btn);
+      var panel = el("div", "era-panel");
+      if (c.context) panel.appendChild(el("p", "era-context", c.context));
+      movs.forEach(function (m) {
+        var box = el("div", "mov"); var h = el("h3"); h.appendChild(el("span")); h.appendChild(document.createTextNode(m.name)); box.appendChild(h);
+        var grid = el("div", "artists");
+        m.artists.forEach(function (a) {
+          var row = el("div", "artist");
+          if (a.img) {
+            var b = el("button", "av"); b.type = "button"; b.setAttribute("aria-label", "Ver imagen: " + a.name);
+            var im = document.createElement("img"); im.src = a.img; im.alt = ""; im.loading = "lazy"; b.appendChild(im);
+            b.addEventListener("click", function () { showImg(a); }); row.appendChild(b);
+          } else row.appendChild(el("div", "av", (a.name || "?").trim().charAt(0).toUpperCase()));
+          var txt = el("div"); var n = el("div", "n", a.name);
+          if (a.woman) { var i = el("i", null, " ♀"); i.setAttribute("aria-label", "artista mujer"); n.appendChild(i); }
+          txt.appendChild(n); txt.appendChild(el("div", "w", a.work));
+          if (a.note) txt.appendChild(el("p", "note", a.note));
+          row.appendChild(txt); grid.appendChild(row);
+        });
+        box.appendChild(grid); panel.appendChild(box);
+      });
+      era.style.setProperty("--c", c.color); era.appendChild(panel); tl.appendChild(era);
+    });
+    empty.hidden = shown > 0;
+  }
+  document.getElementById("q").addEventListener("input", function (e) { q = e.target.value; render(); });
+  document.getElementById("lb-x").addEventListener("click", function () { lb.close ? lb.close() : lb.removeAttribute("open"); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+  fetch("data.json").then(function (r) { return r.json(); }).then(function (d) { cats = d; render(); })
+    .catch(function () { tl.textContent = "No se pudo cargar la biblioteca."; });
+})();
+</script>
+</body>
+</html>

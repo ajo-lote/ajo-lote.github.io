@@ -1,0 +1,342 @@
+[
+ {
+  "name": "Brada Collection",
+  "loc": "Guadalajara, MX",
+  "type": "Brand identity",
+  "color": "#2C2C2A",
+  "img": "uploads/default.webp",
+  "imgHover": "uploads/hover.webp",
+  "eyebrow": "Brand identity · Guadalajara, MX",
+  "description": "A chain of hotels built on a simple promise — that arriving somewhere can feel like being received, not just checked in. I shaped the brand world where elegance is warm rather than distant.",
+  "whatDone": "Brand identity, welcome book, collateral system, brand guidelines",
+  "context": "Accessible luxury hotel chain · Casa 231",
+  "layout": {
+   "cols": "1fr 1fr",
+   "rows": "360px 420px 360px 420px 360px",
+   "areas": "'a a' 'b c' 'd d' 'e f' 'g g'",
+   "cells": [
+    {
+     "area": "a",
+     "img": "uploads/metal-engraving.webp"
+    },
+    {
+     "area": "b",
+     "img": "uploads/desk-2.webp",
+     "objPos": "center center"
+    },
+    {
+     "area": "c",
+     "img": "uploads/stays-02.webp",
+     "objPos": "center center"
+    },
+    {
+     "area": "d",
+     "img": "uploads/tablet.webp"
+    },
+    {
+     "area": "e",
+     "img": "uploads/llave-1.webp",
+     "objPos": "center center"
+    },
+    {
+     "area": "f",
+     "img": "uploads/stays-03.webp",
+     "objPos": "center center"
+    },
+    {
+     "area": "g",
+     "img": "uploads/stamps.webp"
+    }
+   ]
+  }
+ },
+ {
+  "name": "Brada Living",
+  "loc": "Los Ángeles, CA",
+  "type": "Brand identity",
+  "color": "#1D9E75",
+  "img": "uploads/living-default.webp",
+  "imgHover": "uploads/living-hover.webp",
+  "eyebrow": "Brand identity · Los Ángeles, CA",
+  "description": "Apartment living, California-style — where even a rent receipt arrives with a bit of charm. A brand that turns the admin of renting into something that actually feels like home.",
+  "whatDone": "Brand identity, app UI direction, digital collateral",
+  "context": "Rental apartment platform, West Coast · Casa 231",
+  "layout": {
+   "cols": "1fr 1fr",
+   "rows": "360px 420px 360px 420px 360px",
+   "areas": "'a a' 'b c' 'd d' 'e f' 'g g'",
+   "cells": [
+    {
+     "area": "a",
+     "img": "uploads/tarjeta-d2445b1b.webp"
+    },
+    {
+     "area": "b",
+     "img": "uploads/imagen-2-0fffea11.webp",
+     "objPos": "center top"
+    },
+    {
+     "area": "c",
+     "img": "uploads/gift-box-13c24cd4.webp",
+     "objPos": "center center"
+    },
+    {
+     "area": "d",
+     "img": "uploads/hoja-0baa7a53.webp"
+    },
+    {
+     "area": "e",
+     "img": "uploads/iPhone-1-fa1a8258.webp",
+     "objFit": "contain",
+     "bg": "#F2EFE8"
+    },
+    {
+     "area": "f",
+     "img": "uploads/imagen-1-fc1672fe.webp",
+     "objPos": "center top"
+    },
+    {
+     "area": "g",
+     "img": "uploads/cuaderno-bae3d359.webp"
+    }
+   ]
+  }
+ },
+ {
+  "name": "Vayu",
+  "loc": "Baja California, MX",
+  "type": "Visual identity",
+  "color": "#8BBCD6",
+  "img": "uploads/vayu-default.webp",
+  "imgHover": "uploads/vayu-hover.webp",
+  "eyebrow": "Visual identity · Baja California, MX",
+  "description": "Homes tuned to the wind and the sea, for a community that lives outdoors. An editorial identity for a place where the landscape is the lifestyle.",
+  "whatDone": "Visual identity, naming support, sales materials",
+  "context": "Outdoor-lifestyle residential development · Casa 231",
+  "layout": {
+   "cols": "1fr 1fr",
+   "rows": "380px 300px 370px 300px 310px",
+   "areas": "'a a' 'b c' 'd d' 'e f' 'g g'",
+   "cells": [
+    {
+     "area": "a",
+     "img": "uploads/00-muro.webp"
+    },
+    {
+     "area": "b",
+     "img": "uploads/03-productos.webp"
+    },
+    {
+     "area": "c",
+     "img": "uploads/05-hojas.webp"
+    },
+    {
+     "area": "d",
+     "img": "uploads/bylaventana.gif"
+    },
+    {
+     "area": "e",
+     "img": "uploads/04-tarjetas.webp"
+    },
+    {
+     "area": "f",
+     "img": "uploads/07-merch.webp"
+    },
+    {
+     "area": "g",
+     "img": "uploads/facebook-cover.webp"
+    }
+   ]
+  }
+ },
+ {
+  "name": "Mumú",
+  "loc": "Guadalajara, MX",
+  "type": "Brand identity",
+  "color": "#8BA86A",
+  "img": "uploads/mumu-default.webp",
+  "imgHover": "uploads/mumu-hover.webp",
+  "eyebrow": "Brand identity · Guadalajara, MX",
+  "description": "A small green world tucked inside one of Brada's hotels — the pause within the stay. A hand-drawn warmth for a place where you slow down without noticing.",
+  "whatDone": "Brand identity, packaging, in-venue collateral",
+  "context": "Hotel café within Brada Collection · Casa 231",
+  "layout": {
+   "cols": "1fr 1fr",
+   "rows": "380px 300px 370px 300px 310px",
+   "areas": "'a a' 'b c' 'd d' 'e f' 'g g'",
+   "cells": [
+    {
+     "area": "a",
+     "img": "uploads/envoltura.webp"
+    },
+    {
+     "area": "b",
+     "img": "uploads/mensaje.webp"
+    },
+    {
+     "area": "c",
+     "img": "uploads/lifestyle-interior.webp"
+    },
+    {
+     "area": "d",
+     "img": "uploads/tazas.webp"
+    },
+    {
+     "area": "e",
+     "img": "uploads/lifestyle-exterior.webp"
+    },
+    {
+     "area": "f",
+     "img": "uploads/arquitectura.webp"
+    },
+    {
+     "area": "g",
+     "img": "uploads/galletas.webp"
+    }
+   ]
+  }
+ },
+ {
+  "name": "The Fitzgerald",
+  "loc": "Guadalajara, MX",
+  "type": "Visual identity",
+  "color": "#4A4845",
+  "img": "uploads/default-2aab7874.webp",
+  "imgHover": "uploads/fitz-hover.webp",
+  "eyebrow": "Visual identity · Guadalajara, MX",
+  "description": "A rooftop made for celebrating, perched above a tower of offices and shops. A deco monogram and a wink — The Fitz es una fiesta — bring glamour to the top of the working day.",
+  "whatDone": "Visual identity, monogram design, event collateral",
+  "context": "Rooftop venue in mixed-use tower · Casa 231",
+  "layout": {
+   "cols": "1fr 1fr",
+   "rows": "380px 300px 370px 300px 310px",
+   "areas": "'a a' 'b c' 'd d' 'e f' 'g g'",
+   "cells": [
+    {
+     "area": "a",
+     "img": "uploads/wall.webp"
+    },
+    {
+     "area": "b",
+     "img": "uploads/01-tfr copy.webp",
+     "objPos": "center center"
+    },
+    {
+     "area": "c",
+     "img": "uploads/sello.webp"
+    },
+    {
+     "area": "d",
+     "img": "uploads/04-tfr.webp"
+    },
+    {
+     "area": "e",
+     "img": "uploads/llaves.webp"
+    },
+    {
+     "area": "f",
+     "img": "uploads/03-tfr.webp",
+     "objPos": "right center"
+    },
+    {
+     "area": "g",
+     "img": "uploads/05-tfr.webp"
+    }
+   ]
+  }
+ },
+ {
+  "name": "Faro Grill",
+  "loc": "La Cruz, Nayarit",
+  "type": "Brand identity",
+  "color": "#185FA5",
+  "img": "uploads/faro-default.webp",
+  "imgHover": "uploads/faro-hover.webp",
+  "eyebrow": "Brand identity · La Cruz de Huanacaxtle, Nayarit",
+  "description": "A restaurant inside a lighthouse, surrounded by sea. The identity leans into that singular setting — nautical, full of character — making the place itself the destination.",
+  "whatDone": "Brand identity, menu design, environmental graphics",
+  "context": "Lighthouse restaurant · Casa 231",
+  "layout": {
+   "cols": "1fr 1fr",
+   "rows": "380px 300px 370px 300px 310px",
+   "areas": "'a a' 'b c' 'd d' 'e f' 'g g'",
+   "cells": [
+    {
+     "area": "a",
+     "img": "uploads/7-cierre.webp"
+    },
+    {
+     "area": "b",
+     "img": "uploads/Table-tent.webp"
+    },
+    {
+     "area": "c",
+     "img": "uploads/3-platillo.webp"
+    },
+    {
+     "area": "d",
+     "img": "uploads/arquitectura.gif"
+    },
+    {
+     "area": "e",
+     "img": "uploads/6-platillo.webp"
+    },
+    {
+     "area": "f",
+     "img": "uploads/4-empaque.webp"
+    },
+    {
+     "area": "g",
+     "img": "uploads/logo-a7bc5d47.webp"
+    }
+   ]
+  }
+ },
+ {
+  "name": "Constanza Reserve",
+  "loc": "San Juan Cosala, MX",
+  "type": "Brand identity",
+  "color": "#1E4034",
+  "img": "uploads/constanza-default.webp",
+  "imgHover": "uploads/constanza-hover.webp",
+  "eyebrow": "Brand identity · San Juan Cosala, MX",
+  "description": "A place reserved for those who seek stillness. An identity built around the idea of belonging — where nature, warmth, and quiet luxury converge into a world worth returning to.",
+  "whatDone": "Brand identity, collateral system, outdoor advertising, lifestyle direction",
+  "context": "Residential development · Casa 231",
+  "layout": {
+   "cols": "1fr 1fr",
+   "rows": "380px 300px 370px 300px 310px",
+   "areas": "'a a' 'b c' 'd d' 'e f' 'g g'",
+   "cells": [
+    {
+     "area": "a",
+     "img": "uploads/06-billboard.webp"
+    },
+    {
+     "area": "b",
+     "img": "uploads/01-lifestyle.webp"
+    },
+    {
+     "area": "c",
+     "img": "uploads/05-sellitos copy.webp"
+    },
+    {
+     "area": "d",
+     "img": "uploads/02-postales-bienvenida.webp"
+    },
+    {
+     "area": "e",
+     "img": "uploads/03-tote.webp"
+    },
+    {
+     "area": "f",
+     "img": "uploads/14-lifestyle-familia.webp"
+    },
+    {
+     "area": "g",
+     "img": "uploads/01-papeleria.webp"
+    }
+   ]
+  }
+ }
+]
