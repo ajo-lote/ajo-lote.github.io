@@ -308,7 +308,6 @@ export const T = {
             p: [
               "Moving into transport exposed poor usability for non-technical users, flows that didn't fit routes, per diems and field work, visual inconsistencies, fragmented information and no native support for teams or multiple companies. Clients used spreadsheets to compensate.",
             ],
-            img: ["nea-problem.webp"],
           },
           {
             h: "Constraints",
@@ -319,20 +318,19 @@ export const T = {
               "Several roles (admin, accounting, operators, cardholders) needing different views of the same entities.",
               "Multi-company support as a critical need, with no native data model for it.",
             ],
-            carousel: true,
-            img: ["nea-constraints-1.webp", "nea-constraints-2.webp", "nea-constraints-3.webp"],
           },
           {
             h: "Design principles",
             list: ["Simplify for non-technical users.", "Differentiate experiences by role.", "Build new logic on the existing infrastructure."],
-            img: ["nea-strategy.webp"],
+            carousel: true,
+            img: ["nea-roles-1.webp", "nea-roles-2.webp", "nea-roles-3.webp"],
           },
           {
             h: "Multi-company",
             p: [
               "A persistent company selector switches the context of the whole platform while keeping the current module, filters and views.",
             ],
-            img: ["nea-multicompany.webp"],
+            img: ["nea-company-1.webp", "nea-company-2.webp"],
           },
           {
             h: "Budgets",
@@ -664,7 +662,6 @@ export const T = {
             p: [
               "Entrar a transporte expuso mala usabilidad para usuarios no técnicos, flujos que no se ajustaban a rutas, viáticos y trabajo en campo, inconsistencias visuales, información fragmentada y ningún soporte nativo para equipos o varias empresas. Los clientes compensaban con hojas de cálculo.",
             ],
-            img: ["nea-problem.webp"],
           },
           {
             h: "Restricciones",
@@ -675,20 +672,19 @@ export const T = {
               "Varios roles (admin, contabilidad, operadores, tarjetahabientes) que necesitan vistas distintas de las mismas entidades.",
               "Multiempresa como necesidad crítica, sin modelo de datos nativo para ello.",
             ],
-            carousel: true,
-            img: ["nea-constraints-1.webp", "nea-constraints-2.webp", "nea-constraints-3.webp"],
           },
           {
             h: "Principios de diseño",
             list: ["Simplificar para usuarios no técnicos.", "Diferenciar las experiencias por rol.", "Construir la lógica nueva sobre la infraestructura existente."],
-            img: ["nea-strategy.webp"],
+            carousel: true,
+            img: ["nea-roles-1.webp", "nea-roles-2.webp", "nea-roles-3.webp"],
           },
           {
             h: "Multiempresa",
             p: [
               "Un selector de empresa persistente cambia el contexto de toda la plataforma y conserva el módulo, los filtros y las vistas actuales.",
             ],
-            img: ["nea-multicompany.webp"],
+            img: ["nea-company-1.webp", "nea-company-2.webp"],
           },
           {
             h: "Presupuestos",
