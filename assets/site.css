@@ -234,3 +234,20 @@ main { display: block; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* Case studies: white page, narrow column, images first (Framer-like) */
+body.case { --papel: #FFFFFF; background: #fff; }
+body.case .site-header { border-bottom-color: #ececec; }
+.wrap.narrow { max-width: 880px; }
+.case .case-hero img, .case .figs img { width: 100%; height: auto; display: block; }
+.case .case-sec { display: block; border-top: 0; padding: clamp(28px, 4vw, 52px) 0; }
+.case .case-sec:first-of-type { margin-top: 0; }
+.case .case-sec .figs { display: grid; gap: clamp(12px, 2vw, 20px); margin-bottom: clamp(22px, 3vw, 34px); }
+.case .case-sec figure img { border: 0; border-radius: 10px; }
+.case .case-sec .txt { max-width: 38em; }
+.case .case-sec .txt > * + * { margin-top: 1em; }
+.case .case-sec h2 { font-size: clamp(26px, 3vw, 36px); margin-bottom: .2em; }
+.case .case-sec .txt p { font-size: 17px; line-height: 1.6; }
+.case .meta { border-color: #ececec; }
+.case .case-next { border-top-color: #ececec; }
+.case .proto { border-color: #e4e4e4; }

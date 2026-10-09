@@ -69,13 +69,13 @@ ${alt}
 </head>`;
 }
 
-function header(lang, active) {
+function header(lang, active, cls = "") {
   const t = T[lang];
   const other = lang === "en" ? "es" : "en";
   const links = SECTIONS.map(
     (s) => `<a href="/${lang}/${s}/"${active === s ? ' aria-current="page"' : ""}>${esc(t.nav[s])}</a>`
   ).join("");
-  return `<body>
+  return `<body${cls ? ` class="${cls}"` : ""}>
 <a class="skip" href="#main">${esc(t.skip)}</a>
 <header class="site-header"><div class="wrap">
 <a class="brand" href="/${lang}/">Diana <em>Becerra</em></a>
@@ -95,9 +95,9 @@ function footer(lang) {
 </html>`;
 }
 
-function page({ lang, rel, active, title, desc, body, noindex }) {
+function page({ lang, rel, active, title, desc, body, noindex, cls }) {
   const altLang = lang === "en" ? "es" : "en";
-  const html = head({ lang, rel, title, desc, noindex }) + header(lang, active).replace("__ALT__", `/${altLang}${rel}`) + body + footer(lang);
+  const html = head({ lang, rel, title, desc, noindex }) + header(lang, active, cls).replace("__ALT__", `/${altLang}${rel}`) + body + footer(lang);
   write(`${lang}${rel}index.html`, html);
 }
 
@@ -186,16 +186,16 @@ ${brandThumbs(lang)}
         const paras = (s.p || []).map((x) => `<p>${esc(x)}</p>`).join("");
         const list = s.list ? `<ul class="list">${s.list.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
         const figs = (s.img || []).map((f) => productImg(f)).filter(Boolean).map((u) => `<figure><img src="${u}" alt="${esc(s.h)} — ${esc(c.title)}" loading="lazy" decoding="async"></figure>`).join("");
-        return `<section class="case-sec"><h2>${esc(s.h)}</h2><div class="body">${paras}${list}${figs}</div></section>`;
+        return `<section class="case-sec">${figs ? `<div class="figs">${figs}</div>` : ""}<div class="txt"><h2>${esc(s.h)}</h2>${paras}${list}</div></section>`;
       })
       .join("");
     const figma = c.figma ? `<p style="margin-top:20px"><a class="btn ghost" href="${SITE.figmaBrel}" rel="noopener" target="_blank">${esc(t.product.figma)}</a></p>` : "";
     const protoUrl = c.figma ? SITE.figmaBrel.replace("https://www.figma.com/", "https://embed.figma.com/") + "&embed-host=share" : null;
-    const proto = protoUrl ? `<section class="case-sec wide"><h2>${esc(t.product.protoH)}</h2><div class="body"><div class="proto"><iframe src="${protoUrl}" title="${esc(c.title)} — ${esc(t.product.protoH)}" loading="lazy" allowfullscreen></iframe></div><p class="muted" style="font-size:14px">${esc(t.product.protoNote)}</p></div></section>` : "";
+    const proto = protoUrl ? `<section class="case-sec wide"><div class="figs"><div class="proto"><iframe src="${protoUrl}" title="${esc(c.title)} — ${esc(t.product.protoH)}" loading="lazy" allowfullscreen></iframe></div></div><div class="txt"><h2>${esc(t.product.protoH)}</h2><p class="muted">${esc(t.product.protoNote)}</p></div></section>` : "";
     page({
       lang, rel: `/product/${key}/`, active: "product",
       title: `${c.title} — ${c.sub} · Diana Becerra`, desc: c.summary,
-      body: `<section class="page-head" style="padding-bottom:0"><div class="wrap">
+      body: `<section class="page-head" style="padding-bottom:0"><div class="wrap narrow">
 <p class="eyebrow"><a href="/${lang}/product/" style="text-decoration:none">${esc(t.product.back)}</a> &nbsp;·&nbsp; ${esc(c.tags)}</p>
 <h1 class="display" style="margin-top:20px">${esc(c.title)}</h1>
 <p class="lede">${esc(c.sub)}</p>
@@ -203,8 +203,9 @@ ${hero ? `<div class="case-hero" style="margin-top:36px"><img src="${hero}" alt=
 <dl class="meta">${metaRows}</dl>
 <p class="case-intro">${esc(c.intro)}</p>${figma}
 </div></section>
-<div class="wrap">${proto}${sections}
+<div class="wrap narrow">${proto}${sections}
 <div class="case-next"><span class="eyebrow">${esc(t.product.next)}</span><a class="big" href="/${lang}/product/${nextKey}/">${esc(next.title)} →</a></div></div>`,
+      cls: "case",
     });
   });
 
