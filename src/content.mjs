@@ -199,6 +199,7 @@ export const T = {
             p: [
               "Delivered in high fidelity for mobile and desktop, with a documented design system. It hasn't launched, so there are no results yet. The metrics defined to validate it: portal adoption, how often accountants use it, fewer support tickets and time to complete tasks.",
             ],
+            img: ["brel-06-status.webp"],
           },
           {
             h: "What I take from it",
@@ -554,6 +555,7 @@ export const T = {
             p: [
               "Entregado en alta fidelidad para móvil y escritorio, con sistema de diseño documentado. Aún no se lanza, así que todavía no hay resultados. Las métricas definidas para validarlo: adopción del portal, frecuencia de uso de las contadoras, reducción de tickets de soporte y tiempo para completar tareas.",
             ],
+            img: ["brel-06-status.webp"],
           },
           {
             h: "Lo que me llevo",
