@@ -101,6 +101,9 @@ function page({ lang, rel, active, title, desc, body, noindex, cls }) {
   write(`${lang}${rel}index.html`, html);
 }
 
+// Prototipos de Figma ocultos por ahora (cambiar a true para mostrarlos de nuevo).
+const SHOW_PROTOTYPES = false;
+
 // ---------- Components
 function caseCard(lang, key, idx) {
   const c = T[lang].cases[key];
@@ -189,8 +192,8 @@ ${brandThumbs(lang)}
         return `<section class="case-sec">${figs ? `<div class="figs">${figs}</div>` : ""}<div class="txt"><h2>${esc(s.h)}</h2>${paras}${list}</div></section>`;
       })
       .join("");
-    const figma = c.figma ? `<p style="margin-top:20px"><a class="btn ghost" href="${SITE.figmaBrel}" rel="noopener" target="_blank">${esc(t.product.figma)}</a></p>` : "";
-    const protoUrl = c.figma ? SITE.figmaBrel.replace("https://www.figma.com/", "https://embed.figma.com/") + "&embed-host=share" : null;
+    const figma = SHOW_PROTOTYPES && c.figma ? `<p style="margin-top:20px"><a class="btn ghost" href="${SITE.figmaBrel}" rel="noopener" target="_blank">${esc(t.product.figma)}</a></p>` : "";
+    const protoUrl = SHOW_PROTOTYPES && c.figma ? SITE.figmaBrel.replace("https://www.figma.com/", "https://embed.figma.com/") + "&embed-host=share" : null;
     const proto = protoUrl ? `<section class="case-sec wide"><div class="figs"><div class="proto"><iframe src="${protoUrl}" title="${esc(c.title)} — ${esc(t.product.protoH)}" loading="lazy" allowfullscreen></iframe></div></div><div class="txt"><h2>${esc(t.product.protoH)}</h2><p class="muted">${esc(t.product.protoNote)}</p></div></section>` : "";
     page({
       lang, rel: `/product/${key}/`, active: "product",

@@ -272,7 +272,6 @@ export const T = {
             p: [
               "The product didn't reach production because priorities changed, but a full architecture and UI upgrade was delivered, ready for implementation.",
             ],
-            img: ["innerly-10-prototype.webp"],
           },
           {
             h: "What I'd do differently",
@@ -615,7 +614,6 @@ export const T = {
             p: [
               "El producto no llegó a producción porque cambiaron las prioridades, pero se entregó una actualización completa de arquitectura y UI, lista para implementarse.",
             ],
-            img: ["innerly-10-prototype.webp"],
           },
           {
             h: "Qué haría distinto",
