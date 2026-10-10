@@ -120,13 +120,14 @@ const SHOW_PROTOTYPES = false;
 // ---------- Components
 function caseCard(lang, key, idx) {
   const c = T[lang].cases[key];
-  const hero = productImg(c.hero[0]);
+  // Portada vertical opcional: uploads/product/cover-<key>.webp (4:5, ej. 1200x1500). Sin ella: color sólido.
+  const coverRel = `uploads/product/cover-${key}.webp`;
+  const hasCover = exists(coverRel);
   const textOn = c.light ? "on-dark" : "";
   return `<a class="card" href="/${lang}/product/${key}/">
-<div class="art ${hero ? "has-img" : ""} ${textOn}" style="background:${c.color}">
-${hero ? pic(c.hero[0], "", { sizes: "(min-width: 960px) 50vw, 100vw", zoom: false }) : ""}
-<span class="tags">${esc(c.year)}</span>
-<span class="name">${esc(c.title)}</span>
+<div class="art ${hasCover ? "has-img" : ""} ${textOn}" style="background:${c.color}">
+${hasCover ? `<img src="/${coverRel}" alt="${esc(c.title)}" width="1200" height="1500" loading="lazy" decoding="async">` : `<span class="tags">${esc(c.year)}</span>
+<span class="name">${esc(c.title)}</span>`}
 </div>
 <div class="info"><span class="y">${esc(c.tags)}</span><span class="t">${esc(c.sub)}</span><span class="s">${esc(c.summary)}</span></div>
 </a>`;
@@ -235,21 +236,30 @@ ${hero ? `<div class="case-hero" style="margin-top:36px">${pic(c.hero[0], c.titl
   });
 
   // Brand
-  const bp = brandProjects
+  const tiles = brandProjects
     .map((p) => {
       const es = lang === "es" ? BRAND_ES[p.name] : null;
-      const L = p.layout;
-      const cells = L.cells
-        .map((c) => (typeof c === "string" ? "" : `<div class="cell" style="--a:${c.area};${c.bg ? `background:${c.bg};` : ""}">${c.img ? `<img src="/${esc(c.img)}" alt="" loading="lazy" decoding="async"${c.objPos ? ` style="object-position:${c.objPos}"` : ""}>` : ""}</div>`))
-        .join("");
-      const ctx = (es ? es.context : p.context).replace("Casa 231", `<a href="https://www.instagram.com/casa_231/" rel="noopener" target="_blank">Casa 231</a>`);
-      return `<article class="brand-proj" id="${p.slug}">
-<header><div><p class="eyebrow"><span class="dot" style="background:${p.color}"></span>${esc(es ? es.type : p.type)} · ${esc(p.loc)}</p></div><div><h2>${esc(p.name)}</h2><p class="lede" style="margin-top:16px">${esc(es ? es.description : p.description)}</p></div></header>
-<div class="collage" style="--cols:${L.cols};--rows:${L.rows};--areas:${L.areas}">${cells}</div>
-<div class="foot2"><div><p class="l">${esc(t.brand.done)}</p><p>${esc(es ? es.whatDone : p.whatDone)}</p></div><div><p class="l">${esc(t.brand.context)}</p><p>${ctx}</p></div></div>
-</article>`;
+      return `<li><a class="work" href="#${p.slug}" data-p="${p.slug}"><span class="im"><img src="/${esc(p.img)}" alt="" width="625" height="800" loading="lazy" decoding="async">${p.imgHover ? `<img class="h" src="/${esc(p.imgHover)}" alt="" width="625" height="800" loading="lazy" decoding="async">` : ""}</span><span class="nm">${esc(p.name)}</span><span class="ty">${esc(es ? es.type : p.type)}</span></a></li>`;
     })
     .join("");
+  const sheets = brandProjects
+    .map((p) => {
+      const es = lang === "es" ? BRAND_ES[p.name] : null;
+      const seen = new Set();
+      const imgs = p.layout.cells
+        .filter((c) => typeof c !== "string" && c.img && !seen.has(c.img) && seen.add(c.img))
+        .map((c) => `<img src="/${esc(c.img)}" alt="" loading="lazy" decoding="async">`)
+        .join("");
+      const ctx = (es ? es.context : p.context).replace("Casa 231", `<a href="https://www.instagram.com/casa_231/" rel="noopener" target="_blank">Casa 231</a>`);
+      return `<dialog class="proj" id="p-${p.slug}" aria-labelledby="h-${p.slug}"><button type="button" class="proj-x" aria-label="${lang === "es" ? "Cerrar" : "Close"}">×</button><div class="proj-in">
+<header><p class="eyebrow">${esc(es ? es.type : p.type)} · ${esc(p.loc)}</p><h2 id="h-${p.slug}">${esc(p.name)}</h2><p class="lede">${esc(es ? es.description : p.description)}</p></header>
+<div class="masonry">${imgs}</div>
+<div class="foot2"><div><p class="l">${esc(t.brand.done)}</p><p>${esc(es ? es.whatDone : p.whatDone)}</p></div><div><p class="l">${esc(t.brand.context)}</p><p>${ctx}</p></div></div>
+</div></dialog>`;
+    })
+    .join("");
+  const bp = `<ul class="works">${tiles}</ul>${sheets}<noscript><style>dialog.proj{display:block;position:static;margin:0 auto 48px}.proj-x{display:none}</style></noscript>
+<script>(function(){var cur=null;function open(s){var d=document.getElementById("p-"+s);if(!d)return;cur=d;if(d.showModal)d.showModal();else d.setAttribute("open","");d.scrollTop=0;history.replaceState(null,"","#"+s)}function close(){history.replaceState(null,"",location.pathname+location.search)}document.querySelectorAll("a.work").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();open(a.dataset.p)})});document.querySelectorAll("dialog.proj").forEach(function(d){d.addEventListener("close",close);d.addEventListener("click",function(e){if(e.target===d)d.close()});d.querySelector(".proj-x").addEventListener("click",function(){d.close()})});if(location.hash.length>1)open(location.hash.slice(1))})();</script>`;
   page({
     lang, rel: "/brand/", active: "product", title: t.brand.title, desc: t.brand.desc,
     body: `<section class="page-head"><div class="wrap">
@@ -303,16 +313,16 @@ ${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change",
 <div class="about-body"><p class="lede">${esc(a.p1)}</p><p>${esc(a.p2)}</p></div></div>
 </div></section>
 <section class="section nb"><div class="wrap about-wrap">
-<p class="line">${esc(a.museumsLine)}</p>
+<h2 class="h-sec">${esc(a.museumsLine)}</h2>
 <ul class="pgrid">${photoGrid("museum")}</ul>
 <p class="line-link"><a href="/lab/art-library/">${esc(a.museumsLink)}</a></p>
 </div></section>
 <section class="section nb"><div class="wrap about-wrap">
-<p class="line">${esc(a.natureLine)}</p>
+<h2 class="h-sec">${esc(a.natureLine)}</h2>
 <ul class="pgrid">${photoGrid("nature")}</ul>
 </div></section>
 <section class="section nb"><div class="wrap about-wrap">
-<p class="eyebrow" style="margin-bottom:18px">${t.nav.about === "About" ? "Experience" : "Experiencia"}</p>
+<p class="eyebrow eb-mark" style="margin-bottom:18px">${t.nav.about === "About" ? "Experience" : "Experiencia"}</p>
 <p class="statement2" data-reveal>${a.expH}</p>
 <p class="about-p3">${esc(a.p3)}</p>
 <p><a href="/${lang}/brand/">${esc(a.brandLink)}</a></p>
