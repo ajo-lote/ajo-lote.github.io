@@ -218,7 +218,7 @@ ${brandThumbs(lang)}
     page({
       lang, rel: `/product/${key}/`, active: "product",
       title: `${c.title} — ${c.sub} · Diana Becerra`, desc: c.summary,
-      body: `<section class="page-head" style="padding-bottom:0"><div class="wrap narrow">
+      body: `<section class="page-head" style="padding-bottom:0"><div class="wrap">
 <p class="eyebrow"><a href="/${lang}/product/" style="text-decoration:none">${esc(t.product.back)}</a> &nbsp;·&nbsp; ${esc(c.tags)}</p>
 <h1 class="display" style="margin-top:20px">${esc(c.title)}</h1>
 <p class="lede">${esc(c.sub)}</p>
@@ -226,7 +226,7 @@ ${hero ? `<div class="case-hero" style="margin-top:36px">${pic(c.hero[0], c.titl
 <dl class="meta">${metaRows}</dl>
 <p class="case-intro">${esc(c.intro)}</p>${figma}${introFig}
 </div></section>
-<div class="wrap narrow">${proto}${sections}
+<div class="wrap">${proto}${sections}
 <dialog class="zoom" id="zoom" aria-label="${lang === "es" ? "Imagen ampliada" : "Enlarged image"}"><button type="button" class="zoom-x" aria-label="${lang === "es" ? "Cerrar" : "Close"}">×</button><div class="zoom-box"><img alt=""></div></dialog>
 <script>(function(){var d=document.getElementById("zoom"),im=d.querySelector("img");function open(src,alt){im.alt=alt||"";im.src=src;if(d.showModal)d.showModal();else d.setAttribute("open","")}document.addEventListener("click",function(e){var t=e.target.closest("img[data-full]");if(t&&!e.target.closest("dialog"))open(t.dataset.full,t.alt)});d.addEventListener("click",function(){d.close&&d.close()});d.addEventListener("close",function(){im.removeAttribute("src")});document.querySelectorAll("img[data-full]").forEach(function(i){i.tabIndex=0;i.setAttribute("role","button");i.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open(i.dataset.full,i.alt)}})})})();</script>
 <script>(function(){document.querySelectorAll("[data-carousel]").forEach(function(c){var t=c.querySelector(".track"),n=c.querySelectorAll("figure").length,k=c.querySelector(".car-count");function i(){return Math.round(t.scrollLeft/t.clientWidth)}function u(){k.textContent=(i()+1)+" / "+n}t.addEventListener("scroll",u,{passive:true});c.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){t.scrollTo({left:(i()+Number(b.dataset.dir))*t.clientWidth,behavior:"smooth"})})});t.addEventListener("keydown",function(e){if(e.key==="ArrowRight")t.scrollBy({left:t.clientWidth,behavior:"smooth"});if(e.key==="ArrowLeft")t.scrollBy({left:-t.clientWidth,behavior:"smooth"})})})})();</script>
