@@ -182,6 +182,12 @@ ${brandThumbs(lang)}
 <p class="lede">${esc(t.product.p)}</p>
 </div></section>
 <section class="section" style="padding-top:0;border-top:0"><div class="wrap"><div class="cards">${CASE_ORDER.map((k, i) => caseCard(lang, k, i)).join("")}</div></div></section>
+<section class="section"><div class="wrap"><div class="band lab">
+<p class="eyebrow" style="color:inherit">${esc(t.home.labKicker)}</p>
+<h2 class="h2" style="margin-top:14px">${esc(t.home.labH)}</h2>
+<p class="lede">${esc(t.home.labP)}</p>
+<div class="actions"><a class="btn solid" href="/${lang}/lab/">${esc(t.home.labCta)} →</a></div>
+</div></div></section>
 <section class="section"><div class="wrap brand-strip">
 <div><p class="eyebrow">${esc(t.product.brandKicker)}</p><h2 class="h2" style="margin-top:14px">${esc(t.product.brandH)}</h2>
 <p class="lede" style="margin-top:14px;color:var(--muted)">${esc(t.product.brandP)}</p>

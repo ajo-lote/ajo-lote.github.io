@@ -62,7 +62,7 @@ main { display: block; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
 .btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 999px; border: 1.5px solid var(--tinta); transition: background .15s, color .15s; }
 .btn.solid { background: var(--tinta); color: var(--papel); }
-.btn.solid:hover { background: var(--cempasuchil); border-color: var(--cempasuchil); color: var(--tinta); }
+.btn.solid:hover { background: var(--bugambilia); border-color: var(--bugambilia); color: var(--tinta); }
 .btn.ghost:hover { background: var(--tinta); color: var(--papel); }
 .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 32px; flex-wrap: wrap; }
 .link-arrow { font-weight: 600; font-size: 15px; }
@@ -93,7 +93,6 @@ main { display: block; }
 .band .h2 { max-width: 18em; }
 .band p.lede { margin-top: 18px; max-width: 34em; }
 .band .actions { margin-top: 28px; }
-.band.lab .btn.solid:hover { background: var(--papel); border-color: var(--papel); }
 
 .brand-strip { display: grid; grid-template-columns: 1.1fr 1.4fr; gap: clamp(24px, 5vw, 72px); align-items: center; }
 .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -121,7 +120,7 @@ main { display: block; }
 .case-sec .body > * + * { margin-top: 1em; }
 .case-sec ul.list { display: grid; gap: 10px; }
 .case-sec ul.list li { padding-left: 22px; position: relative; }
-.case-sec ul.list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--cempasuchil); }
+.case-sec ul.list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--bugambilia); }
 .case-sec figure { margin: 0; }
 .case-sec figure img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); }
 .case-next { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; border-top: 1px solid var(--line); padding: 36px 0 64px; }
@@ -169,7 +168,7 @@ main { display: block; }
 .toolkit li { border: 1.5px solid var(--tinta); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
 .toolkit li span { color: var(--muted); margin-left: 6px; font-size: 12px; }
 .mail { display: inline-flex; gap: 14px; align-items: baseline; font-family: var(--serif); font-size: clamp(26px, 5.2vw, 64px); letter-spacing: -0.02em; text-decoration: none; border-bottom: 2px solid var(--tinta); padding-bottom: 4px; word-break: break-word; }
-.mail:hover { color: var(--cempasuchil); border-bottom-color: var(--cempasuchil); }
+.mail:hover { border-bottom-color: var(--bugambilia); background: var(--bugambilia); }
 .social { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; }
 .social a { font-weight: 600; }
 
@@ -280,7 +279,7 @@ dialog.zoom::backdrop { background: rgba(17,17,17,.88); }
 .work:hover .im img { transform: scale(1.03); }
 .work .nm { display: block; margin-top: 12px; font-family: var(--serif); font-size: clamp(19px, 1.7vw, 24px); line-height: 1.15; letter-spacing: -0.01em; }
 .work .ty { display: block; margin-top: 3px; font-size: 13px; color: var(--muted); }
-.work:hover .nm { text-decoration: underline; text-decoration-color: var(--cempasuchil); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.work:hover .nm { text-decoration: underline; text-decoration-color: var(--bugambilia); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 dialog.proj { border: 0; padding: 0; background: var(--papel); color: var(--tinta); width: min(1100px, 100vw); max-width: 100vw; height: 100vh; max-height: 100vh; margin: 0 auto; overflow-y: auto; }
 dialog.proj::backdrop { background: rgba(17,17,17,.7); }
 .proj-in { padding: clamp(56px, 7vw, 88px) var(--pad) clamp(40px, 6vw, 72px); }
@@ -300,10 +299,11 @@ dialog.proj::backdrop { background: rgba(17,17,17,.7); }
 .about-body p:not(.lede) { font-size: 17px; line-height: 1.6; color: var(--muted); max-width: 36em; }
 .h-sec { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.12; letter-spacing: -0.015em; max-width: 22em; margin: 0 0 clamp(18px, 2.4vw, 28px); }
 .statement2 { font-size: clamp(24px, 3vw, 38px); line-height: 1.2; max-width: 24em; }
-.eb-mark::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 10px; background: var(--cempasuchil); border-radius: 50%; vertical-align: 1px; }
+.eb-mark::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 10px; background: var(--bugambilia); border-radius: 50%; vertical-align: 1px; }
 .about-p3 { font-size: 17px; line-height: 1.6; }
-.line-link a { text-decoration: underline; text-decoration-color: var(--cempasuchil); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.zoom-x { background: var(--cempasuchil); }
+.line-link a { text-decoration: underline; text-decoration-color: var(--bugambilia); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.line-link a:hover, .about-wrap p > a:hover { background: var(--bugambilia); }
+.zoom-x { background: var(--bugambilia); }
 .card .art.has-img { padding: 0; }
 
 /* Escala tipográfica contenida + ancho único */
@@ -324,3 +324,11 @@ dialog.proj { width: min(960px, calc(100vw - 32px)); height: calc(100vh - 64px);
 .proj-in { padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 48px) clamp(32px, 5vw, 56px); }
 @media (max-width: 1100px) { .works { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px) { .works { grid-template-columns: repeat(2, 1fr); } dialog.proj { width: calc(100vw - 16px); height: calc(100vh - 32px); max-height: calc(100vh - 32px); margin: 16px auto; } }
+
+/* Círculos y enlaces: Bugambilia; Cempasúchil queda para navegación */
+.tk .logo { background: var(--bugambilia) !important; color: var(--tinta); }
+.actions .btn.ghost:hover { background: var(--bugambilia); border-color: var(--bugambilia); color: var(--tinta); }
+.link-arrow { text-decoration: none; border-bottom: 1.5px solid var(--tinta); }
+.link-arrow:hover { border-bottom-color: var(--bugambilia); }
+.nav a:hover, .nav a[aria-current="page"] { border-bottom-color: var(--cempasuchil); border-bottom-width: 2px; }
+.nav .lang:hover { background: var(--cempasuchil); border-color: var(--cempasuchil); color: var(--tinta); }
