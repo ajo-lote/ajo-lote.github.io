@@ -27,6 +27,19 @@ const productImg = (name) => {
   return null;
 };
 
+// Tamaños de imagen (los genera tools/make-sizes.py)
+const SIZES = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, "uploads/product/sizes.json"), "utf8")); } catch { return {}; } })();
+const COLUMN = "(min-width: 960px) 880px, calc(100vw - 40px)";
+function pic(name, alt, { sizes = COLUMN, eager = false, zoom = true } = {}) {
+  const u = productImg(name);
+  if (!u) return "";
+  const m = SIZES[name];
+  const base = name.replace(/\.webp$/, "");
+  const set = m && m.v.length ? ` srcset="${[...m.v.map((w) => `/uploads/product/w/${base}-${w}.webp ${w}w`), `${u} ${m.w}w`].join(", ")}" sizes="${sizes}"` : "";
+  const dim = m ? ` width="${m.w}" height="${m.h}"` : "";
+  return `<img src="${u}"${set}${dim} alt="${esc(alt)}"${zoom ? ` data-full="${u}"` : ""} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+}
+
 // CSS
 const css = fs.readFileSync(path.join(SRC, "site.css"), "utf8");
 const cssHash = crypto.createHash("md5").update(css).digest("hex").slice(0, 8);
@@ -111,7 +124,7 @@ function caseCard(lang, key, idx) {
   const textOn = c.light ? "on-dark" : "";
   return `<a class="card" href="/${lang}/product/${key}/">
 <div class="art ${hero ? "has-img" : ""} ${textOn}" style="background:${c.color}">
-${hero ? `<img src="${hero}" alt="" loading="lazy" decoding="async">` : ""}
+${hero ? pic(c.hero[0], "", { sizes: "(min-width: 960px) 50vw, 100vw", zoom: false }) : ""}
 <span class="tags">${esc(c.year)}</span>
 <span class="name">${esc(c.title)}</span>
 </div>
@@ -188,7 +201,7 @@ ${brandThumbs(lang)}
       .map((s) => {
         const paras = (s.p || []).map((x) => `<p>${esc(x)}</p>`).join("");
         const list = s.list ? `<ul class="list">${s.list.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
-        const figs = (s.img || []).map((f) => productImg(f)).filter(Boolean).map((u) => `<figure><img src="${u}" alt="${esc(s.h)} — ${esc(c.title)}" loading="lazy" decoding="async"></figure>`).join("");
+        const figs = (s.img || []).map((f) => productImg(f)).filter(Boolean).map((u) => `<figure>${pic(u.split("/").pop(), `${s.h} — ${c.title}`)}</figure>`).join("");
         const nImg = (s.img || []).map((f) => productImg(f)).filter(Boolean).length;
         const figsHtml = !figs ? "" : s.carousel && nImg > 1
           ? `<div class="carousel" data-carousel><div class="figs track" tabindex="0" aria-label="${esc(s.h)}">${figs}</div><div class="car-nav"><button type="button" data-dir="-1" aria-label="${lang === "es" ? "Anterior" : "Previous"}">←</button><span class="car-count" aria-live="polite">1 / ${nImg}</span><button type="button" data-dir="1" aria-label="${lang === "es" ? "Siguiente" : "Next"}">→</button></div></div>`
@@ -197,7 +210,7 @@ ${brandThumbs(lang)}
       })
       .join("");
     const introU = c.introImg ? productImg(c.introImg) : null;
-    const introFig = introU ? `<figure class="intro-fig"><img src="${introU}" alt="${esc(c.title)}" loading="lazy" decoding="async"></figure>` : "";
+    const introFig = introU ? `<figure class="intro-fig">${pic(c.introImg, c.title)}</figure>` : "";
     const figma = SHOW_PROTOTYPES && c.figma ? `<p style="margin-top:20px"><a class="btn ghost" href="${SITE.figmaBrel}" rel="noopener" target="_blank">${esc(t.product.figma)}</a></p>` : "";
     const protoUrl = SHOW_PROTOTYPES && c.figma ? SITE.figmaBrel.replace("https://www.figma.com/", "https://embed.figma.com/") + "&embed-host=share" : null;
     const proto = protoUrl ? `<section class="case-sec wide"><div class="figs"><div class="proto"><iframe src="${protoUrl}" title="${esc(c.title)} — ${esc(t.product.protoH)}" loading="lazy" allowfullscreen></iframe></div></div><div class="txt"><h2>${esc(t.product.protoH)}</h2><p class="muted">${esc(t.product.protoNote)}</p></div></section>` : "";
@@ -208,11 +221,13 @@ ${brandThumbs(lang)}
 <p class="eyebrow"><a href="/${lang}/product/" style="text-decoration:none">${esc(t.product.back)}</a> &nbsp;·&nbsp; ${esc(c.tags)}</p>
 <h1 class="display" style="margin-top:20px">${esc(c.title)}</h1>
 <p class="lede">${esc(c.sub)}</p>
-${hero ? `<div class="case-hero" style="margin-top:36px"><img src="${hero}" alt="${esc(c.title)}" decoding="async"></div>` : `<div class="case-hero block ${c.light ? "on-dark" : ""}" style="background:${c.color};margin-top:36px"><span class="name">${esc(c.year)}</span></div>`}
+${hero ? `<div class="case-hero" style="margin-top:36px">${pic(c.hero[0], c.title, { eager: true })}</div>` : `<div class="case-hero block ${c.light ? "on-dark" : ""}" style="background:${c.color};margin-top:36px"><span class="name">${esc(c.year)}</span></div>`}
 <dl class="meta">${metaRows}</dl>
 <p class="case-intro">${esc(c.intro)}</p>${figma}${introFig}
 </div></section>
 <div class="wrap narrow">${proto}${sections}
+<dialog class="zoom" id="zoom" aria-label="${lang === "es" ? "Imagen ampliada" : "Enlarged image"}"><button type="button" class="zoom-x" aria-label="${lang === "es" ? "Cerrar" : "Close"}">×</button><div class="zoom-box"><img alt=""></div></dialog>
+<script>(function(){var d=document.getElementById("zoom"),im=d.querySelector("img");function open(src,alt){im.alt=alt||"";im.src=src;if(d.showModal)d.showModal();else d.setAttribute("open","")}document.addEventListener("click",function(e){var t=e.target.closest("img[data-full]");if(t&&!e.target.closest("dialog"))open(t.dataset.full,t.alt)});d.addEventListener("click",function(){d.close&&d.close()});d.addEventListener("close",function(){im.removeAttribute("src")});document.querySelectorAll("img[data-full]").forEach(function(i){i.tabIndex=0;i.setAttribute("role","button");i.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open(i.dataset.full,i.alt)}})})})();</script>
 <script>(function(){document.querySelectorAll("[data-carousel]").forEach(function(c){var t=c.querySelector(".track"),n=c.querySelectorAll("figure").length,k=c.querySelector(".car-count");function i(){return Math.round(t.scrollLeft/t.clientWidth)}function u(){k.textContent=(i()+1)+" / "+n}t.addEventListener("scroll",u,{passive:true});c.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){t.scrollTo({left:(i()+Number(b.dataset.dir))*t.clientWidth,behavior:"smooth"})})});t.addEventListener("keydown",function(e){if(e.key==="ArrowRight")t.scrollBy({left:t.clientWidth,behavior:"smooth"});if(e.key==="ArrowLeft")t.scrollBy({left:-t.clientWidth,behavior:"smooth"})})})})();</script>
 <div class="case-next"><span class="eyebrow">${esc(t.product.next)}</span><a class="big" href="/${lang}/product/${nextKey}/">${esc(next.title)} →</a></div></div>`,
       cls: "case",
