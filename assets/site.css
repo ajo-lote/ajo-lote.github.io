@@ -44,7 +44,9 @@ em { font-style: italic; }
 .site-header { border-bottom: 1px solid var(--line); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap; }
 .brand { font-family: var(--serif); font-size: 22px; letter-spacing: -0.01em; text-decoration: none; }
-.brand em { font-style: italic; }
+.brand em { font-style: normal; }
+.brand:hover, .brand:focus-visible { font-style: italic; }
+.brand:hover em, .brand:focus-visible em { font-style: italic; }
 .nav { display: flex; align-items: center; gap: clamp(14px, 3vw, 34px); flex-wrap: wrap; }
 .nav a { text-decoration: none; font-size: 14px; font-weight: 500; padding: 4px 0; border-bottom: 1.5px solid transparent; }
 .nav a:hover { border-bottom-color: var(--tinta); }
