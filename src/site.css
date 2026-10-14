@@ -358,3 +358,6 @@ html { scroll-behavior: smooth; }
 .proj .foot2 p:not(.l) { font-size: 15px; line-height: 1.55; }
 .proj-x { background: var(--bugambilia); border-color: var(--tinta); }
 .proj-x:hover { background: var(--tinta); color: var(--bugambilia); }
+
+/* Estado activo/foco de campos: Cempasúchil (nunca el azul del navegador) */
+input:focus, textarea:focus, select:focus, .lib-search:focus { outline: none; border-color: var(--cempasuchil); box-shadow: 0 0 0 3px var(--cempasuchil); }

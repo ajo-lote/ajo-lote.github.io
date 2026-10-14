@@ -96,3 +96,4 @@
     .chap-side { position: static; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ruler .ind, .ruler button, .ruler button::after, .ruler button .s, .chap, .chip, .artist, .chap-range { transition: none !important; } }
+.lib-search:focus, .lib-search:focus-visible { outline: none; border-color: var(--cempasuchil); box-shadow: 0 0 0 3px var(--cempasuchil); }
