@@ -361,3 +361,7 @@ html { scroll-behavior: smooth; }
 
 /* Estado activo/foco de campos: Cempasúchil (nunca el azul del navegador) */
 input:focus, textarea:focus, select:focus, .lib-search:focus { outline: none; border-color: var(--cempasuchil); box-shadow: 0 0 0 3px var(--cempasuchil); }
+
+/* Cerrar del modal: círculo rosa sin contorno */
+.proj-x { border: 0; }
+.proj-x:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--cempasuchil); }
