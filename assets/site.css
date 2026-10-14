@@ -352,3 +352,9 @@ dialog.proj { width: min(960px, calc(100vw - 32px)); height: calc(100vh - 64px);
 .section[id] { scroll-margin-top: 24px; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Branding modal: texto descriptivo más pequeño, cerrar en Bugambilia */
+.proj .lede { font-size: clamp(15px, 1.25vw, 17px); line-height: 1.55; max-width: 36em; }
+.proj .foot2 p:not(.l) { font-size: 15px; line-height: 1.55; }
+.proj-x { background: var(--bugambilia); border-color: var(--tinta); }
+.proj-x:hover { background: var(--tinta); color: var(--bugambilia); }
