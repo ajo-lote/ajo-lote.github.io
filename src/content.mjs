@@ -68,8 +68,8 @@ export const T = {
       title: "Lab — Diana Becerra",
       desc: "Experiments with AI: what I wanted to find out, what I decided and what the AI did.",
       kicker: "Lab",
-      h1: "Experiments with <em>judgment</em>, not formulas.",
-      p: "A hub of things I build and test with AI. Each experiment has a short card: the question, my decisions, what the AI did and what I would change.",
+      h1: "Experiments with <em>judgment</em>.",
+      p: "A hub of things I build and test with AI.",
       question: "The question",
       decided: "What I decided",
       ai: "What the AI did",
@@ -88,7 +88,7 @@ export const T = {
           status: "live",
           color: "#EE5B20",
           summary:
-            "A guide for museum lovers: 12 periods, what was happening in the world, 130 artists and, soon, my favorite pieces with my own photos and the museum where I saw them.",
+            "A guide for museum lovers: 12 periods, what was happening in the world, and my favorite pieces with my own photos and the museum where I saw them.",
           question: "How do you stop feeling lost among periods and movements when you walk into a museum?",
           decided:
             "Periods first, each with the context of its time. Women artists are marked. My own favorite pieces, with the museum, are layered on top. When an image is not the artist's work, the page says so.",
@@ -424,8 +424,8 @@ export const T = {
       title: "Lab — Diana Becerra",
       desc: "Experimentos con IA: qué quería averiguar, qué decidí y qué hizo la IA.",
       kicker: "Lab",
-      h1: "Experimentos con <em>criterio</em>, no con fórmulas.",
-      p: "Un hub de cosas que construyo y pruebo con IA. Cada experimento tiene una ficha corta: la pregunta, mis decisiones, qué hizo la IA y qué cambiaría.",
+      h1: "Experimentos con <em>criterio</em>.",
+      p: "Un hub de cosas que construyo y pruebo con IA.",
       question: "La pregunta",
       decided: "Qué decidí",
       ai: "Qué hizo la IA",
@@ -444,7 +444,7 @@ export const T = {
           status: "live",
           color: "#EE5B20",
           summary:
-            "Una guía para quienes aman los museos: 12 periodos, qué pasaba en el mundo, 130 artistas y, pronto, mis piezas favoritas con mis fotos y el museo donde las vi.",
+            "Una guía para quienes aman los museos: 12 periodos, qué pasaba en el mundo y mis piezas favoritas con mis fotos y el museo donde las vi.",
           question: "¿Cómo dejar de sentirte perdida entre periodos y corrientes cuando entras a un museo?",
           decided:
             "Primero los periodos, cada uno con el contexto de su época. Las artistas mujeres están marcadas. Encima van mis piezas favoritas, con su museo. Cuando una imagen no es obra del artista, la página lo dice.",
