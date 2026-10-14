@@ -11,3 +11,8 @@ Sitio bilingüe (EN/ES) publicado con GitHub Pages desde la rama `main`.
 - Experimentos del Lab: cada uno vive en su carpeta, por ejemplo `lab/art-library/`.
 
 Vista local: `python3 -m http.server 8000` y abre http://localhost:8000
+
+## Biblioteca de arte (bilingüe)
+- Plantillas en `src/art-library.{body.html,css,js}`; `node src/build.mjs` genera `es/lab/art-library/` y `en/lab/art-library/` (y deja `lab/art-library/index.html` como redirección por idioma del navegador).
+- Datos: `lab/art-library/data.json` (ES) y `data.en.json` (EN). El inglés se genera con `python3 tools/art-library-en.py` (el mapa de traducción está dentro del script; si cambias un texto en `data.json`, agrega su traducción ahí).
+- Mis piezas: `lab/art-library/pieces.json` (título y nota pueden ser `{ "es": "...", "en": "..." }`).

@@ -53,7 +53,7 @@ const brandProjects = JSON.parse(fs.readFileSync(path.join(SRC, "brand-projects.
 
 const SECTIONS = ["product", "lab", "about", "contact"];
 
-function head({ lang, rel, title, desc, noindex }) {
+function head({ lang, rel, title, desc, noindex, extra = "" }) {
   const t = T[lang];
   const alt = LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${SITE.domain}/${l}${rel}">`).join("\n");
   return `<!doctype html>
@@ -79,6 +79,7 @@ ${alt}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="/assets/site.css?v=${cssHash}">
+${extra}
 </head>`;
 }
 
@@ -108,9 +109,9 @@ function footer(lang) {
 </html>`;
 }
 
-function page({ lang, rel, active, title, desc, body, noindex, cls }) {
+function page({ lang, rel, active, title, desc, body, noindex, cls, extra }) {
   const altLang = lang === "en" ? "es" : "en";
-  const html = head({ lang, rel, title, desc, noindex }) + header(lang, active, cls).replace("__ALT__", `/${altLang}${rel}`) + body + footer(lang);
+  const html = head({ lang, rel, title, desc, noindex, extra }) + header(lang, active, cls).replace("__ALT__", `/${altLang}${rel}`) + body + footer(lang);
   write(`${lang}${rel}index.html`, html);
 }
 
@@ -324,7 +325,7 @@ ${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change",
 <section class="section nb"><div class="wrap about-wrap">
 <h2 class="h-sec">${esc(a.museumsLine)}</h2>
 <ul class="pgrid">${photoGrid("museum")}</ul>
-<p class="line-link"><a href="/lab/art-library/">${esc(a.museumsLink)}</a></p>
+<p class="line-link"><a href="/${lang}/lab/art-library/">${esc(a.museumsLink)}</a></p>
 </div></section>
 <section class="section nb"><div class="wrap about-wrap">
 <h2 class="h-sec">${esc(a.natureLine)}</h2>
@@ -448,12 +449,70 @@ write(
 </html>`
 );
 
+// ---------- Biblioteca de arte (Lab): una página por idioma desde plantillas en src/art-library.*
+const ALCSS = fs.readFileSync(path.join(SRC, "art-library.css"), "utf8");
+fs.writeFileSync(path.join(ROOT, "assets/art-library.css"), ALCSS);
+const alHash = crypto.createHash("md5").update(ALCSS).digest("hex").slice(0, 8);
+const AL = {
+  es: {
+    title: "Biblioteca de arte — Lab · Diana Becerra",
+    desc: "Una guía para no perderte en el museo: 12 periodos, qué pasaba en el mundo, sus artistas y mis piezas favoritas con foto y museo.",
+    h1: "Biblioteca de <em>arte</em>.",
+    story: "Para no perderte en el museo: ubica cada periodo, <em>qué pasaba en el mundo</em> y quiénes son sus voces. Nació porque me sentí perdida entre épocas y corrientes; poco a poco la voy llenando con mis piezas favoritas, con fotos mías y el museo donde las vi.",
+    experiment: "Experimento", viewLabel: "Vista", timeline: "Línea del tiempo", myPieces: "Mis piezas",
+    search: "Buscar artista, obra o museo…", periods: "Periodos", noResults: "No hay resultados para esa búsqueda.",
+    emptyH: "Aquí van mis piezas favoritas.", emptyP: "Cada una con mi foto, el museo donde la vi y por qué me gusta. Estoy preparando la primera tanda.",
+    enlarged: "Imagen ampliada", close: "Cerrar",
+    js: {
+      lang: "es", data: "/lab/art-library/data.json", hash: "#piezas", viewImage: "Ver imagen: ", whatHappened: "Qué pasaba", woman: "artista mujer", myPhoto: "Mi foto · ",
+      allMuseums: "Todos los museos", loadError: "No se pudo cargar la biblioteca.",
+      short: { antiguo: "Antiguo", medieval: "Medieval", renacimiento: "Renacimiento", barroco: "Barroco", neoclasico: "Neoclasicismo", realismo: "Realismo", impresionismo: "Impresionismo", modernismo: "Modernismo", entreguerras: "Vanguardias", posguerra: "Posguerra", conceptual: "Conceptual", contemporaneo: "Contemporáneo" },
+    },
+  },
+  en: {
+    title: "Art Library — Lab · Diana Becerra",
+    desc: "A guide so you don't get lost in the museum: 12 periods, what was happening in the world, their artists and my favorite pieces with photo and museum.",
+    h1: "Art <em>Library</em>.",
+    story: "So you don't get lost in the museum: it places each period, <em>what was happening in the world</em> and who its voices are. It began because I felt lost among eras and movements; little by little I'm filling it with my favorite pieces, with my own photos and the museum where I saw them.",
+    experiment: "Experiment", viewLabel: "View", timeline: "Timeline", myPieces: "My pieces",
+    search: "Search artist, work or museum…", periods: "Periods", noResults: "No results for that search.",
+    emptyH: "My favorite pieces go here.", emptyP: "Each one with my photo, the museum where I saw it and why I like it. I'm preparing the first batch.",
+    enlarged: "Enlarged image", close: "Close",
+    js: {
+      lang: "en", data: "/lab/art-library/data.en.json", hash: "#pieces", viewImage: "View image: ", whatHappened: "What was happening", woman: "woman artist", myPhoto: "My photo · ",
+      allMuseums: "All museums", loadError: "The library could not be loaded.",
+      short: { antiguo: "Ancient", medieval: "Medieval", renacimiento: "Renaissance", barroco: "Baroque", neoclasico: "Neoclassicism", realismo: "Realism", impresionismo: "Impressionism", modernismo: "Modernism", entreguerras: "Avant-gardes", posguerra: "Post-war", conceptual: "Conceptual", contemporaneo: "Contemporary" },
+    },
+  },
+};
+const alBody = fs.readFileSync(path.join(SRC, "art-library.body.html"), "utf8");
+const alJs = fs.readFileSync(path.join(SRC, "art-library.js"), "utf8");
+for (const lang of LANGS) {
+  const a = AL[lang];
+  const I = {
+    ...a.js,
+    era: "__ERA__", counts: "__COUNTS__", results: "__RES__", piecesCount: "__PC__",
+  };
+  const fns = lang === "es"
+    ? `era: function (n, t) { return "Época " + n + " de " + t; }, counts: function (a, p, m) { return a + " artistas · " + p + " periodos" + (m ? " · " + m + " piezas mías" : ""); }, results: function (n) { return n + " resultado" + (n === 1 ? "" : "s"); }, piecesCount: function (n, mu) { return n + " pieza" + (n === 1 ? "" : "s") + (mu ? " en " + mu : ""); }`
+    : `era: function (n, t) { return "Era " + n + " of " + t; }, counts: function (a, p, m) { return a + " artists · " + p + " periods" + (m ? " · " + m + " of my pieces" : ""); }, results: function (n) { return n + " result" + (n === 1 ? "" : "s"); }, piecesCount: function (n, mu) { return n + " piece" + (n === 1 ? "" : "s") + (mu ? " at " + mu : ""); }`;
+  const i18n = JSON.stringify(a.js).slice(0, -1) + "," + fns + "}";
+  const fill = (s) => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k === "lang" ? lang : a[k] ?? ""));
+  page({
+    lang, rel: "/lab/art-library/", active: "lab", title: a.title, desc: a.desc,
+    extra: `<link rel="stylesheet" href="/assets/art-library.css?v=${alHash}">`,
+    body: fill(alBody) + `<script>\n${alJs.replace("__I18N__", i18n)}</script>`,
+  });
+}
+// La URL anterior redirige al idioma del navegador
+fs.writeFileSync(path.join(ROOT, "lab/art-library/index.html"), `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Biblioteca de arte · Art Library</title><meta name="robots" content="noindex"><link rel="canonical" href="${SITE.domain}/es/lab/art-library/"><script>var l=(navigator.language||"es").slice(0,2)==="en"?"en":"es";location.replace("/"+l+"/lab/art-library/"+location.hash.replace("#piezas","#pieces").replace("#pieces",l==="es"?"#piezas":"#pieces"));</script><meta http-equiv="refresh" content="0;url=/es/lab/art-library/"></head><body><a href="/es/lab/art-library/">Biblioteca de arte</a> · <a href="/en/lab/art-library/">Art Library</a></body></html>\n`);
+
 // robots + sitemap
 const urls = [];
 for (const lang of LANGS) {
   for (const r of ["/", "/product/", ...CASE_ORDER.map((k) => `/product/${k}/`), "/brand/", "/lab/", "/about/", "/contact/"]) urls.push(`${SITE.domain}/${lang}${r}`);
 }
-urls.push(`${SITE.domain}/lab/art-library/`);
+for (const lang of LANGS) urls.push(`${SITE.domain}/${lang}/lab/art-library/`);
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `<url><loc>${u}</loc></url>`).join("\n")}\n</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE.domain}/sitemap.xml\n`);
 

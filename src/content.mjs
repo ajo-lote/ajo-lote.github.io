@@ -83,7 +83,7 @@ export const T = {
       items: [
         {
           slug: "art-library",
-          href: "/lab/art-library/",
+          href: "/en/lab/art-library/",
           title: "Art Library",
           year: "2026",
           status: "live",
@@ -95,7 +95,6 @@ export const T = {
             "Periods first, each with the context of its time. Women artists are marked. My own favorite pieces, with the museum, are layered on top. When an image is not the artist's work, the page says so.",
           ai: "Claude wrote the code and helped draft entries. Structure, voice and editorial rules were mine.",
           change: "Verify image rights and replace placeholders with open-access images for every artist.",
-          note: "Interface in Spanish.",
         },
         {
           slug: "some-other-place",
@@ -444,7 +443,7 @@ export const T = {
       items: [
         {
           slug: "art-library",
-          href: "/lab/art-library/",
+          href: "/es/lab/art-library/",
           title: "Biblioteca de arte",
           year: "2026",
           status: "live",

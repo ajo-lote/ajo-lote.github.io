@@ -1,0 +1,33 @@
+  <section class="lib-hero"><div class="wrap">
+    <p class="eyebrow"><a href="/{{lang}}/lab/" style="text-decoration:none">← Lab</a> &nbsp;·&nbsp; {{experiment}}</p>
+    <h1 class="display" style="margin-top:20px">{{h1}}</h1>
+    <p class="story">{{story}}</p>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div></section>
+
+  <div class="wrap controls">
+    <div class="seg" role="group" aria-label="{{viewLabel}}">
+      <button type="button" id="m-time" aria-pressed="true">{{timeline}}</button>
+      <button type="button" id="m-mine" aria-pressed="false">{{myPieces}} <span class="n" id="n-mine"></span></button>
+    </div>
+    <input id="q" class="lib-search" type="search" placeholder="{{search}}" aria-label="{{search}}" autocomplete="off">
+  </div>
+
+  <div id="view-time">
+    <div class="ruler-wrap"><nav class="ruler" id="ruler" aria-label="{{periods}}"></nav></div>
+    <div id="chaps"></div>
+    <p class="wrap none" id="none" hidden>{{noResults}}</p>
+  </div>
+
+  <div id="view-mine" class="wrap pieces" hidden>
+    <div class="mchips" id="mchips"></div>
+    <div class="pgrid2" id="pieces"></div>
+    <div class="empty-pieces" id="empty" hidden>
+      <h2>{{emptyH}}</h2>
+      <p>{{emptyP}}</p>
+    </div>
+  </div>
+<dialog class="lb" id="lb" aria-label="{{enlarged}}">
+  <img id="lb-img" alt="">
+  <div class="cap"><div><p class="a" id="lb-a"></p><p class="o" id="lb-o"></p><p class="mu" id="lb-m"></p><p class="c" id="lb-c"></p></div><button type="button" id="lb-x">{{close}}</button></div>
+</dialog>

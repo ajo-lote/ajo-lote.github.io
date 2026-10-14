@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art Library — Lab · Diana Becerra</title>
+<meta name="description" content="A guide so you don't get lost in the museum: 12 periods, what was happening in the world, their artists and my favorite pieces with photo and museum.">
+<meta name="theme-color" content="#F6F0DE">
+
+<link rel="canonical" href="https://dianabecerra.design/en/lab/art-library/">
+<link rel="alternate" hreflang="en" href="https://dianabecerra.design/en/lab/art-library/">
+<link rel="alternate" hreflang="es" href="https://dianabecerra.design/es/lab/art-library/">
+<link rel="alternate" hreflang="x-default" href="https://dianabecerra.design/en/lab/art-library/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Art Library — Lab · Diana Becerra">
+<meta property="og:description" content="A guide so you don't get lost in the museum: 12 periods, what was happening in the world, their artists and my favorite pieces with photo and museum.">
+<meta property="og:url" content="https://dianabecerra.design/en/lab/art-library/">
+<meta property="og:locale" content="en_US">
+<link rel="icon" type="image/png" href="/uploads/favicon-64.png">
+<link rel="apple-touch-icon" href="/uploads/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=eb14b8a4">
+<link rel="stylesheet" href="/assets/art-library.css?v=da658a52">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="brand" href="/en/">Diana <em>Becerra</em></a>
+<nav class="nav" aria-label="Main"><a href="/en/product/">Product</a><a href="/en/lab/" aria-current="page">Lab</a><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a class="lang" href="/es/lab/art-library/" hreflang="es" lang="es" aria-label="Español">ES</a></nav>
+</div></header>
+<main id="main">  <section class="lib-hero"><div class="wrap">
+    <p class="eyebrow"><a href="/en/lab/" style="text-decoration:none">← Lab</a> &nbsp;·&nbsp; Experiment</p>
+    <h1 class="display" style="margin-top:20px">Art <em>Library</em>.</h1>
+    <p class="story">So you don't get lost in the museum: it places each period, <em>what was happening in the world</em> and who its voices are. It began because I felt lost among eras and movements; little by little I'm filling it with my favorite pieces, with my own photos and the museum where I saw them.</p>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div></section>
+
+  <div class="wrap controls">
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" id="m-time" aria-pressed="true">Timeline</button>
+      <button type="button" id="m-mine" aria-pressed="false">My pieces <span class="n" id="n-mine"></span></button>
+    </div>
+    <input id="q" class="lib-search" type="search" placeholder="Search artist, work or museum…" aria-label="Search artist, work or museum…" autocomplete="off">
+  </div>
+
+  <div id="view-time">
+    <div class="ruler-wrap"><nav class="ruler" id="ruler" aria-label="Periods"></nav></div>
+    <div id="chaps"></div>
+    <p class="wrap none" id="none" hidden>No results for that search.</p>
+  </div>
+
+  <div id="view-mine" class="wrap pieces" hidden>
+    <div class="mchips" id="mchips"></div>
+    <div class="pgrid2" id="pieces"></div>
+    <div class="empty-pieces" id="empty" hidden>
+      <h2>My favorite pieces go here.</h2>
+      <p>Each one with my photo, the museum where I saw it and why I like it. I'm preparing the first batch.</p>
+    </div>
+  </div>
+<dialog class="lb" id="lb" aria-label="Enlarged image">
+  <img id="lb-img" alt="">
+  <div class="cap"><div><p class="a" id="lb-a"></p><p class="o" id="lb-o"></p><p class="mu" id="lb-m"></p><p class="c" id="lb-c"></p></div><button type="button" id="lb-x">Close</button></div>
+</dialog>
+<script>
+(function () {
+  var I = {"lang":"en","data":"/lab/art-library/data.en.json","hash":"#pieces","viewImage":"View image: ","whatHappened":"What was happening","woman":"woman artist","myPhoto":"My photo · ","allMuseums":"All museums","loadError":"The library could not be loaded.","short":{"antiguo":"Ancient","medieval":"Medieval","renacimiento":"Renaissance","barroco":"Baroque","neoclasico":"Neoclassicism","realismo":"Realism","impresionismo":"Impressionism","modernismo":"Modernism","entreguerras":"Avant-gardes","posguerra":"Post-war","conceptual":"Conceptual","contemporaneo":"Contemporary"},era: function (n, t) { return "Era " + n + " of " + t; }, counts: function (a, p, m) { return a + " artists · " + p + " periods" + (m ? " · " + m + " of my pieces" : ""); }, results: function (n) { return n + " result" + (n === 1 ? "" : "s"); }, piecesCount: function (n, mu) { return n + " piece" + (n === 1 ? "" : "s") + (mu ? " at " + mu : ""); }};
+  var LANG = I.lang;
+  function U(u) { return u && u.charAt(0) !== "/" && !/^https?:/.test(u) ? "/lab/art-library/" + u : u; }
+  function L(x) { return x && typeof x === "object" ? (x[LANG] || x.es || x.en || "") : (x || ""); }
+  var SHORT = I.short;
+  var cats = [], pieces = [], mode = "time", q = "", museum = "";
+  var $ = function (id) { return document.getElementById(id); };
+  var lb = $("lb"), reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function artistTotal() { var n = 0; cats.forEach(function (c) { c.movements.forEach(function (m) { n += m.artists.length; }); }); return n; }
+  function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function catById(id) { return cats.filter(function (c) { return c.id === id; })[0]; }
+
+  /* Ventana ampliada (obras de artistas y mis piezas) */
+  function show(o) {
+    $("lb-img").src = o.src; $("lb-img").alt = o.alt || "";
+    $("lb-a").textContent = o.title || ""; $("lb-o").textContent = o.sub || "";
+    $("lb-m").textContent = o.museum || ""; $("lb-c").textContent = o.caption || "";
+    if (lb.showModal) lb.showModal(); else lb.setAttribute("open", "");
+  }
+  $("lb-x").addEventListener("click", function () { lb.close(); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+
+  /* Regla + capítulos */
+  var chapEls = {}, rulerBtns = {};
+  function buildTimeline() {
+    var ruler = $("ruler"), host = $("chaps");
+    var ind = el("span", "ind"); ind.setAttribute("aria-hidden", "true"); ruler.appendChild(ind);
+    function moveInd(id) { var b = rulerBtns[id]; if (!b) return; ind.style.width = (b.offsetWidth - 14) + "px"; ind.style.transform = "translateX(" + (b.offsetLeft + 10) + "px)"; }
+    window.addEventListener("resize", function () { var cur = ruler.querySelector('[aria-current="true"]'); if (cur) { var k = Object.keys(rulerBtns).filter(function (x) { return rulerBtns[x] === cur; })[0]; moveInd(k); } });
+    cats.forEach(function (c) {
+      var b = el("button"); b.type = "button"; b.style.setProperty("--c", c.color);
+      b.appendChild(el("span", "r", c.range)); b.appendChild(el("span", "s", SHORT[c.id] || c.name));
+      b.addEventListener("click", function () {
+        chapEls[c.id].scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      });
+      ruler.appendChild(b); rulerBtns[c.id] = b;
+
+      var sec = el("section", "chap"); sec.id = "era-" + c.id; sec.style.setProperty("--c", c.color);
+      var inn = el("div", "chap-in"); var side = el("div", "chap-side");
+      side.appendChild(el("span", "chap-range", c.range)); side.appendChild(el("span", "chap-n", I.era(cats.indexOf(c) + 1, cats.length))); side.appendChild(el("h2", "chap-name", c.name));
+      if (c.context) { var cx = el("div", "chap-ctx"); cx.appendChild(el("span", "eyebrow", I.whatHappened)); cx.appendChild(el("p", null, c.context)); side.appendChild(cx); }
+      var main = el("div");
+      if (c.movements.length > 1) {
+        var chips = el("div", "chips");
+        c.movements.forEach(function (m) {
+          var ch = el("button", "chip", m.name); ch.type = "button"; ch.setAttribute("aria-pressed", "false");
+          ch.addEventListener("click", function () {
+            var on = ch.getAttribute("aria-pressed") !== "true";
+            [].forEach.call(chips.children, function (x) { x.setAttribute("aria-pressed", "false"); });
+            ch.setAttribute("aria-pressed", on ? "true" : "false");
+            [].forEach.call(main.querySelectorAll(".mov"), function (mv) { mv.dataset.off = (on && mv.dataset.name !== m.name) ? "1" : ""; });
+            applyFilters();
+          });
+          chips.appendChild(ch);
+        });
+        main.appendChild(chips);
+      }
+      c.movements.forEach(function (m) {
+        var mv = el("div", "mov"); mv.dataset.name = m.name; mv.appendChild(el("h3", null, m.name));
+        var grid = el("div", "artists");
+        m.artists.forEach(function (a) {
+          var card = el("div", "artist"); card.dataset.s = norm(a.name + " " + a.work);
+          if (a.img) {
+            var bt = el("button", "av"); bt.type = "button"; bt.setAttribute("aria-label", I.viewImage + a.name);
+            var im = document.createElement("img"); im.src = U(a.img); im.alt = ""; im.loading = "lazy"; bt.appendChild(im);
+            bt.addEventListener("click", function () { show({ src: U(a.img), alt: a.name + " — " + a.work, title: a.name, sub: a.work, caption: a.imgCaption }); });
+            card.appendChild(bt);
+          } else card.appendChild(el("div", "av", (a.name || "?").trim().charAt(0).toUpperCase()));
+          var tx = el("div"); var n = el("div", "n", a.name);
+          if (a.woman) { var i = el("i", null, " ♀"); i.setAttribute("aria-label", I.woman); n.appendChild(i); }
+          tx.appendChild(n); tx.appendChild(el("div", "w", a.work));
+          if (a.note) tx.appendChild(el("p", "note", a.note));
+          var mine = pieces.filter(function (p) { return norm(p.artist) === norm(a.name); })[0];
+          if (mine) {
+            var tg = el("button", "mine", I.myPhoto + mine.museum); tg.type = "button";
+            tg.addEventListener("click", function () { museum = ""; setMode("mine"); $("q").value = a.name; q = a.name; applyFilters(); });
+            tx.appendChild(tg);
+          }
+          card.appendChild(tx); grid.appendChild(card);
+        });
+        mv.appendChild(grid); main.appendChild(mv);
+      });
+      inn.appendChild(side); inn.appendChild(main); sec.appendChild(inn); host.appendChild(sec); chapEls[c.id] = sec;
+    });
+    /* Scroll-spy */
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var id = e.target.id.replace("era-", "");
+          Object.keys(rulerBtns).forEach(function (k) { rulerBtns[k].setAttribute("aria-current", k === id ? "true" : "false"); chapEls[k].classList.toggle("is-active", k === id); });
+          moveInd(id);
+          var b = rulerBtns[id], r = $("ruler");
+          if (b && r.scrollWidth > r.clientWidth) r.scrollTo({ left: b.offsetLeft - 24, behavior: reduce ? "auto" : "smooth" });
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+      Object.keys(chapEls).forEach(function (k) { io.observe(chapEls[k]); });
+    }
+  }
+
+  /* Mis piezas */
+  function buildPieces() {
+    $("n-mine").textContent = pieces.length ? "(" + pieces.length + ")" : "";
+    var grid = $("pieces"); grid.textContent = "";
+    var museums = {}; pieces.forEach(function (p) { museums[p.museum] = (museums[p.museum] || 0) + 1; });
+    var mc = $("mchips"); mc.textContent = "";
+    if (Object.keys(museums).length > 1) {
+      var all = el("button", "chip", I.allMuseums); all.type = "button"; all.setAttribute("aria-pressed", museum ? "false" : "true");
+      all.addEventListener("click", function () { museum = ""; buildPieces(); applyFilters(); }); mc.appendChild(all);
+      Object.keys(museums).forEach(function (m) {
+        var ch = el("button", "chip", m + " (" + museums[m] + ")"); ch.type = "button"; ch.setAttribute("aria-pressed", museum === m ? "true" : "false");
+        ch.addEventListener("click", function () { museum = m; buildPieces(); applyFilters(); }); mc.appendChild(ch);
+      });
+    }
+    pieces.forEach(function (p) {
+      var c = catById(p.era) || { color: "#999" };
+      var b = el("button", "piece"); b.type = "button"; b.style.setProperty("--c", c.color);
+      b.dataset.s = norm([L(p.title), p.artist, p.museum, p.city].join(" ")); b.dataset.m = p.museum;
+      var ph = el("div", "ph"); var im = document.createElement("img"); im.src = U(p.photo); im.alt = L(p.title) + " — " + p.artist; im.loading = "lazy"; ph.appendChild(im);
+      b.appendChild(ph); b.appendChild(el("div", "t", L(p.title)));
+      b.appendChild(el("div", "a", p.artist + (p.year ? " · " + p.year : "")));
+      var m = el("span", "m"); m.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4zm0 5.5A1.5 1.5 0 1 1 6 2.5a1.5 1.5 0 0 1 0 3z" fill="currentColor"/></svg>';
+      m.appendChild(document.createTextNode(p.museum + (p.city ? ", " + p.city : ""))); b.appendChild(m);
+      b.addEventListener("click", function () { show({ src: U(p.photo), alt: L(p.title), title: L(p.title), sub: p.artist + (p.year ? " · " + p.year : ""), museum: p.museum + (p.city ? ", " + p.city : ""), caption: L(p.note) }); });
+      grid.appendChild(b);
+    });
+  }
+
+  function applyFilters() {
+    var nq = norm(q), shown = 0;
+    /* Línea del tiempo */
+    cats.forEach(function (c) {
+      var sec = chapEls[c.id], vis = 0;
+      [].forEach.call(sec.querySelectorAll(".mov"), function (mv) {
+        var mvVis = 0;
+        [].forEach.call(mv.querySelectorAll(".artist"), function (a) {
+          var ok = !mv.dataset.off && (!nq || a.dataset.s.indexOf(nq) > -1);
+          a.hidden = !ok; if (ok) mvVis++;
+        });
+        mv.hidden = mvVis === 0; vis += mvVis;
+      });
+      sec.hidden = vis === 0; rulerBtns[c.id].disabled = vis === 0; shown += vis;
+    });
+    $("none").hidden = shown > 0 || mode !== "time";
+    /* Mis piezas */
+    var pv = 0;
+    [].forEach.call($("pieces").children, function (b) {
+      var ok = (!nq || b.dataset.s.indexOf(nq) > -1) && (!museum || b.dataset.m === museum);
+      b.hidden = !ok; if (ok) pv++;
+    });
+    $("empty").hidden = pieces.length > 0;
+    $("count").textContent = mode === "time"
+      ? (nq ? I.results(shown) : I.counts(artistTotal(), cats.length, pieces.length))
+      : (pieces.length ? I.piecesCount(pv, museum) : "");
+  }
+
+  function setMode(m) {
+    mode = m;
+    $("m-time").setAttribute("aria-pressed", m === "time"); $("m-mine").setAttribute("aria-pressed", m === "mine");
+    $("view-time").hidden = m !== "time"; $("view-mine").hidden = m !== "mine";
+    if (location.hash !== (m === "mine" ? I.hash : "")) history.replaceState(null, "", m === "mine" ? I.hash : location.pathname);
+    applyFilters();
+  }
+  $("m-time").addEventListener("click", function () { setMode("time"); });
+  $("m-mine").addEventListener("click", function () { setMode("mine"); });
+  $("q").addEventListener("input", function (e) { q = e.target.value; applyFilters(); });
+
+  Promise.all([
+    fetch(I.data).then(function (r) { return r.json(); }),
+    fetch("/lab/art-library/pieces.json").then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; })
+  ]).then(function (res) {
+    cats = res[0]; pieces = res[1] || [];
+    buildTimeline(); buildPieces(); applyFilters();
+    if (location.hash === I.hash) setMode("mine");
+    else if (location.hash.indexOf("#era-") === 0 && chapEls[location.hash.slice(5)]) chapEls[location.hash.slice(5)].scrollIntoView();
+  }).catch(function () { $("count").textContent = I.loadError; });
+})();
+</script></main>
+<footer class="site-footer"><div class="wrap">
+<span>© 2026 Diana Becerra · Guadalajara, MX · Available remotely</span>
+<span><a href="https://www.linkedin.com/in/dianabecerra/" rel="noopener">LinkedIn</a> · <a href="https://dribbble.com/Diana-Becerra" rel="noopener">Dribbble</a> · <a href="mailto:dianabecerra.cv@gmail.com">dianabecerra.cv@gmail.com</a></span>
+</div></footer>
+</body>
+</html>
