@@ -344,3 +344,7 @@ dialog.proj { width: min(960px, calc(100vw - 32px)); height: calc(100vh - 64px);
 .section.nb { padding: clamp(40px, 6vw, 80px) 0; }
 .about-p3 { margin: 28px 0 22px; }
 .statement2 .h1-sub { color: var(--muted); }
+
+/* Contacto: correo con jerarquía menor que el H1 */
+.mail { font-size: clamp(20px, 2.8vw, 32px); word-break: normal; overflow-wrap: anywhere; padding-bottom: 6px; }
+.mail span, .mail svg { font-size: .8em; }
