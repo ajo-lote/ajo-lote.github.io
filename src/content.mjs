@@ -220,10 +220,10 @@ export const T = {
         tags: "Personal development · Product design",
         year: "2025",
         meta: { role: "Product Designer", year: "2025 · about 6 months", focus: "Mobile-first, design system", status: "Full design delivered; priorities changed before launch" },
-        summary: "A mobile-first redesign that gives test results a clear next step so people have a reason to come back.",
-        short: "Test results that point to a clear next step.",
+        summary: "A mobile-first redesign that takes people from a test result to personal growth tools, so they have a reason to come back.",
+        short: "From a test result to a personal growth path.",
         intro:
-          "Innerly users received test results but had no clear next step, which gave the business little reason to bring them back. I redesigned the experience mobile-first and added Courses as the MVP's new piece.",
+          "Innerly is a self-knowledge platform: people arrive after taking an online test and read their results. But a result gets read once and that's it. To give the platform more value without relying only on adding more tests, I researched how to nurture it, and the bet was to add tools for personal growth. I redesigned the experience mobile-first around that path.",
         introImg: "innerly-02-research.webp",
         sections: [
           {
@@ -582,10 +582,10 @@ export const T = {
         tags: "Desarrollo personal · Diseño de producto",
         year: "2025",
         meta: { role: "Product Designer", year: "2025 · unos 6 meses", focus: "Mobile-first, sistema de diseño", status: "Diseño completo entregado; cambiaron las prioridades antes del lanzamiento" },
-        summary: "Un rediseño mobile-first que da a los resultados de los tests un siguiente paso claro para que las personas tengan razones para volver.",
-        short: "Resultados de tests que dan un siguiente paso claro.",
+        summary: "Un rediseño mobile-first que lleva a las personas del resultado de un test a herramientas de desarrollo personal, para que tengan razones para volver.",
+        short: "Del resultado de un test a un camino de desarrollo personal.",
         intro:
-          "Quienes usaban Innerly recibían resultados de tests pero no tenían un siguiente paso claro, y el negocio tenía pocas razones para traerlos de vuelta. Rediseñé la experiencia mobile-first y sumé Cursos como la pieza nueva del MVP.",
+          "Innerly es una plataforma de autoconocimiento: las personas llegan al hacer un test en línea y leen sus resultados. Pero un resultado se lee una vez y ahí termina. Para darle más valor a la plataforma sin depender solo de agregar tests, investigué cómo nutrirla, y la apuesta fue sumar herramientas de desarrollo personal. Rediseñé la experiencia mobile-first alrededor de ese camino.",
         introImg: "innerly-02-research.webp",
         sections: [
           {
