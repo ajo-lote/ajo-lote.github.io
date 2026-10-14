@@ -350,25 +350,10 @@ export const T = {
           {
             h: "Transactions",
             p: [
-              "Organized into Purchases, Commissions and Deposits.",
+              "Organized into Purchases, Commissions and Deposits. Purchase details have normal, expanded and rejected states, with the rejection cause stated explicitly. Accounting gets custom fields, accounting metadata and XML (SAT) management inside the same flow.",
             ],
-            img: ["nea-transactions-1.webp"],
-          },
-          {
-            h: "Purchase details and rejections",
-            sub: true,
-            p: [
-              "Purchase details have normal, expanded and rejected states, with the rejection cause stated explicitly.",
-            ],
-            img: ["nea-transactions-2.webp"],
-          },
-          {
-            h: "Custom fields and XML (SAT)",
-            sub: true,
-            p: [
-              "Accounting gets custom fields, accounting metadata and XML (SAT) management inside the same flow.",
-            ],
-            img: ["nea-transactions-3.webp"],
+            carousel: true,
+            img: ["nea-transactions-1.webp", "nea-transactions-2.webp", "nea-transactions-3.webp"],
           },
           {
             h: "Users",
@@ -737,25 +722,10 @@ export const T = {
           {
             h: "Movimientos",
             p: [
-              "Organizados en Compras, Comisiones y Depósitos.",
+              "Organizados en Compras, Comisiones y Depósitos. El detalle de una compra tiene estados normal, expandido y rechazado, con la causa del rechazo explícita. Contabilidad cuenta con campos personalizados, metadatos contables y gestión de XML (SAT) dentro del mismo flujo.",
             ],
-            img: ["nea-transactions-1.webp"],
-          },
-          {
-            h: "Detalle de compra y rechazos",
-            sub: true,
-            p: [
-              "El detalle de una compra tiene estados normal, expandido y rechazado, con la causa del rechazo explícita.",
-            ],
-            img: ["nea-transactions-2.webp"],
-          },
-          {
-            h: "Campos personalizados y XML (SAT)",
-            sub: true,
-            p: [
-              "Contabilidad cuenta con campos personalizados, metadatos contables y gestión de XML (SAT) dentro del mismo flujo.",
-            ],
-            img: ["nea-transactions-3.webp"],
+            carousel: true,
+            img: ["nea-transactions-1.webp", "nea-transactions-2.webp", "nea-transactions-3.webp"],
           },
           {
             h: "Usuarios",
