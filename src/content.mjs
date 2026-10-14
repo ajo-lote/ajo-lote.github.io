@@ -224,20 +224,21 @@ export const T = {
         short: "Test results that point to a clear next step.",
         intro:
           "Innerly users received test results but had no clear next step, which gave the business little reason to bring them back. I redesigned the experience mobile-first and added Courses as the MVP's new piece.",
+        introImg: "innerly-02-research.webp",
         sections: [
           {
             h: "Research",
             p: [
               "I reviewed wellness and psychology apps for navigation, progress and tone patterns, and ran AI-assisted interviews. Three patterns kept showing up: dashboards that point to an action, light ongoing progress, and no rigid metrics that create anxiety.",
             ],
-            img: ["innerly-02-research.webp"],
+            img: ["innerly-03-architecture.webp"],
           },
           {
             h: "Decisions",
             p: [
               "The MVP would improve the existing experience and add Courses. Most traffic was mobile, so the redesign went mobile-first and was governed by a design system, aiming for fewer screens and clearer direction.",
             ],
-            img: ["innerly-03-architecture.webp"],
+            img: ["innerly-overview.webp"],
           },
           {
             h: "Home",
@@ -279,7 +280,7 @@ export const T = {
             p: [
               "The product didn't reach production because priorities changed, but a full architecture and UI upgrade was delivered, ready for implementation.",
             ],
-            img: ["innerly-overview.webp", "innerly-mockup.webp"],
+            img: ["innerly-mockup.webp"],
           },
           {
             h: "What I'd do differently",
@@ -585,20 +586,21 @@ export const T = {
         short: "Resultados de tests que dan un siguiente paso claro.",
         intro:
           "Quienes usaban Innerly recibían resultados de tests pero no tenían un siguiente paso claro, y el negocio tenía pocas razones para traerlos de vuelta. Rediseñé la experiencia mobile-first y sumé Cursos como la pieza nueva del MVP.",
+        introImg: "innerly-02-research.webp",
         sections: [
           {
             h: "Investigación",
             p: [
               "Revisé apps de bienestar y psicología para ver patrones de navegación, progreso y tono, y realicé entrevistas asistidas por IA. Aparecieron tres patrones: dashboards que apuntan a una acción, progreso ligero y continuo, y ninguna métrica rígida que genere ansiedad.",
             ],
-            img: ["innerly-02-research.webp"],
+            img: ["innerly-03-architecture.webp"],
           },
           {
             h: "Decisiones",
             p: [
               "El MVP mejoraría la experiencia existente y sumaría Cursos. La mayor parte del tráfico era móvil, así que el rediseño fue mobile-first y regido por un sistema de diseño, con menos pantallas y una dirección más clara.",
             ],
-            img: ["innerly-03-architecture.webp"],
+            img: ["innerly-overview.webp"],
           },
           {
             h: "Home",
@@ -640,7 +642,7 @@ export const T = {
             p: [
               "El producto no llegó a producción porque cambiaron las prioridades, pero se entregó una actualización completa de arquitectura y UI, lista para implementarse.",
             ],
-            img: ["innerly-overview.webp", "innerly-mockup.webp"],
+            img: ["innerly-mockup.webp"],
           },
           {
             h: "Qué haría distinto",
