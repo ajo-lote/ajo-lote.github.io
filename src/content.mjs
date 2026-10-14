@@ -314,9 +314,10 @@ export const T = {
             p: [
               "Moving into transport exposed poor usability for non-technical users, flows that didn't fit routes, per diems and field work, visual inconsistencies, fragmented information and no native support for teams or multiple companies. Clients used spreadsheets to compensate.",
             ],
+            img: ["nea-field.webp"],
           },
           {
-            h: "Constraints",
+            h: "Constraints and design principles",
             list: [
               "No room to change models, endpoints or business rules; new logic had to live in the front end.",
               "A small engineering team, so changes had to be incremental and reusable.",
@@ -324,10 +325,9 @@ export const T = {
               "Several roles (admin, accounting, operators, cardholders) needing different views of the same entities.",
               "Multi-company support as a critical need, with no native data model for it.",
             ],
-          },
-          {
-            h: "Design principles",
-            list: ["Simplify for non-technical users.", "Differentiate experiences by role.", "Build new logic on the existing infrastructure."],
+            p2: [
+              "Within that room, three principles guided the design: simplify for non-technical users, differentiate experiences by role and build new logic on the existing infrastructure.",
+            ],
             carousel: true,
             img: ["nea-roles-1.webp", "nea-roles-2.webp", "nea-roles-3.webp"],
           },
@@ -341,16 +341,48 @@ export const T = {
           {
             h: "Budgets",
             p: [
-              "Modeled as a hierarchy: Company → Area → Operator or Team → Card. The creation flow covers basic setup, rules and permissions, members, duration and recurrence, and a final review on mobile and desktop. The detail view shows available versus spent, category breakdowns, members, linked transactions and controlled adjustments.",
+              "Modeled as a hierarchy: Company → Area → Operator or Team → Card.",
             ],
-            img: ["nea-budgets-1.webp", "nea-budgets-2.webp", "nea-budgets-3.webp"],
+            img: ["nea-budgets-1.webp"],
+          },
+          {
+            h: "Creation flow",
+            sub: true,
+            p: [
+              "Covers basic setup, rules and permissions, members, duration and recurrence, and a final review on mobile and desktop.",
+            ],
+            img: ["nea-budgets-3.webp"],
+          },
+          {
+            h: "Budget view",
+            sub: true,
+            p: [
+              "The detail view shows available versus spent, category breakdowns, members, linked transactions and controlled adjustments.",
+            ],
+            img: ["nea-budgets-2.webp"],
           },
           {
             h: "Transactions",
             p: [
-              "Organized into Purchases, Commissions and Deposits. Purchase details have normal, expanded and rejected states, with the rejection cause stated explicitly. Accounting gets custom fields, accounting metadata and XML (SAT) management inside the same flow.",
+              "Organized into Purchases, Commissions and Deposits.",
             ],
-            img: ["nea-transactions-1.webp", "nea-transactions-2.webp", "nea-transactions-3.webp"],
+            img: ["nea-transactions-1.webp"],
+          },
+          {
+            h: "Purchase details and rejections",
+            sub: true,
+            p: [
+              "Purchase details have normal, expanded and rejected states, with the rejection cause stated explicitly.",
+            ],
+            img: ["nea-transactions-2.webp"],
+          },
+          {
+            h: "Custom fields and XML (SAT)",
+            sub: true,
+            p: [
+              "Accounting gets custom fields, accounting metadata and XML (SAT) management inside the same flow.",
+            ],
+            img: ["nea-transactions-3.webp"],
           },
           {
             h: "Design system",
@@ -365,6 +397,12 @@ export const T = {
               "Transport clients could model their operations, and operators and admins better understood spending rules. Transaction and XML review became part of period closing. The design system reduced visual patching, support reported fewer questions and sales had a clearer story for acquisition. I didn't measure ticket reduction or training time rigorously, and I'd call that out as a limitation.",
             ],
             img: ["nea-impact.webp"],
+          },
+          {
+            h: "What I take from it",
+            p: [
+              "Designing within hard constraints was the challenge: I used the front end to introduce multi-company support and budgets without touching the data models.",
+            ],
           },
         ],
         hero: ["nea-01-hero.webp"],
@@ -676,9 +714,10 @@ export const T = {
             p: [
               "Entrar a transporte expuso mala usabilidad para usuarios no técnicos, flujos que no se ajustaban a rutas, viáticos y trabajo en campo, inconsistencias visuales, información fragmentada y ningún soporte nativo para equipos o varias empresas. Los clientes compensaban con hojas de cálculo.",
             ],
+            img: ["nea-field.webp"],
           },
           {
-            h: "Restricciones",
+            h: "Restricciones y principios de diseño",
             list: [
               "No había margen para cambiar modelos, endpoints ni reglas de negocio; la lógica nueva tenía que vivir en el front end.",
               "Un equipo de ingeniería pequeño, así que los cambios debían ser incrementales y reutilizables.",
@@ -686,10 +725,9 @@ export const T = {
               "Varios roles (admin, contabilidad, operadores, tarjetahabientes) que necesitan vistas distintas de las mismas entidades.",
               "Multiempresa como necesidad crítica, sin modelo de datos nativo para ello.",
             ],
-          },
-          {
-            h: "Principios de diseño",
-            list: ["Simplificar para usuarios no técnicos.", "Diferenciar las experiencias por rol.", "Construir la lógica nueva sobre la infraestructura existente."],
+            p2: [
+              "Con ese margen, tres principios guiaron el diseño: simplificar para usuarios no técnicos, diferenciar las experiencias por rol y construir la lógica nueva sobre la infraestructura existente.",
+            ],
             carousel: true,
             img: ["nea-roles-1.webp", "nea-roles-2.webp", "nea-roles-3.webp"],
           },
@@ -703,16 +741,48 @@ export const T = {
           {
             h: "Presupuestos",
             p: [
-              "Modelados como una jerarquía: Empresa → Área → Operador o Equipo → Tarjeta. El flujo de creación cubre configuración básica, reglas y permisos, integrantes, duración y recurrencia, y una revisión final en móvil y escritorio. La vista de detalle muestra disponible contra gastado, desglose por categoría, integrantes, movimientos vinculados y ajustes controlados.",
+              "Modelados como una jerarquía: Empresa → Área → Operador o Equipo → Tarjeta.",
             ],
-            img: ["nea-budgets-1.webp", "nea-budgets-2.webp", "nea-budgets-3.webp"],
+            img: ["nea-budgets-1.webp"],
+          },
+          {
+            h: "Flujo de creación",
+            sub: true,
+            p: [
+              "Cubre configuración básica, reglas y permisos, integrantes, duración y recurrencia, y una revisión final en móvil y escritorio.",
+            ],
+            img: ["nea-budgets-3.webp"],
+          },
+          {
+            h: "Vista de presupuesto",
+            sub: true,
+            p: [
+              "El detalle muestra disponible contra gastado, desglose por categoría, integrantes, movimientos vinculados y ajustes controlados.",
+            ],
+            img: ["nea-budgets-2.webp"],
           },
           {
             h: "Movimientos",
             p: [
-              "Organizados en Compras, Comisiones y Depósitos. El detalle de una compra tiene estados normal, expandido y rechazado, con la causa del rechazo explícita. Contabilidad cuenta con campos personalizados, metadatos contables y gestión de XML (SAT) dentro del mismo flujo.",
+              "Organizados en Compras, Comisiones y Depósitos.",
             ],
-            img: ["nea-transactions-1.webp", "nea-transactions-2.webp", "nea-transactions-3.webp"],
+            img: ["nea-transactions-1.webp"],
+          },
+          {
+            h: "Detalle de compra y rechazos",
+            sub: true,
+            p: [
+              "El detalle de una compra tiene estados normal, expandido y rechazado, con la causa del rechazo explícita.",
+            ],
+            img: ["nea-transactions-2.webp"],
+          },
+          {
+            h: "Campos personalizados y XML (SAT)",
+            sub: true,
+            p: [
+              "Contabilidad cuenta con campos personalizados, metadatos contables y gestión de XML (SAT) dentro del mismo flujo.",
+            ],
+            img: ["nea-transactions-3.webp"],
           },
           {
             h: "Sistema de diseño",
@@ -727,6 +797,12 @@ export const T = {
               "Los clientes de transporte pudieron modelar su operación, y operadores y administradores entendieron mejor las reglas de gasto. La revisión de movimientos y XML pasó a formar parte del cierre de periodo. El sistema de diseño redujo los parches visuales, soporte reportó menos preguntas y ventas contó con una narrativa más clara. No medí con rigor la reducción de tickets ni el tiempo de capacitación, y lo señalo como una limitación.",
             ],
             img: ["nea-impact.webp"],
+          },
+          {
+            h: "Lo que me llevo",
+            p: [
+              "Diseñar dentro de restricciones duras fue el reto: usé el front end para introducir multiempresa y presupuestos sin tocar los modelos de datos.",
+            ],
           },
         ],
         hero: ["nea-01-hero.webp"],

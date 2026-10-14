@@ -366,3 +366,8 @@ input:focus, textarea:focus, select:focus, .lib-search:focus { outline: none; bo
 /* Cerrar del modal: círculo rosa sin contorno */
 .proj-x { border: 0; }
 .proj-x:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--cempasuchil); }
+
+/* Subsecciones de casos (p. ej. Flujo de creación dentro de Presupuestos) */
+.case .case-sec.sub { padding-top: 0; }
+.case .case-sec.sub h2 { font-size: clamp(20px, 2.1vw, 26px); }
+.case .case-sec .txt ul.list + p { margin-top: 1.2em; }
