@@ -268,9 +268,9 @@ ${hero ? `<div class="case-hero" style="margin-top:36px">${pic(c.hero[0], c.titl
       const status = it.status === "live" ? t.lab.live : t.lab.ongoing;
       const ext = it.external ? ' rel="noopener" target="_blank"' : "";
       return `<article class="lab-card">
-<div class="top" style="background:${it.color}"><h2>${esc(it.title)}</h2><span class="pill">${esc(status)}${it.year ? " · " + esc(it.year) : ""}</span></div>
+<div class="top" style="background:${it.color}"><h2>${esc(it.title)}</h2><span class="pill">${esc(it.year || status)}</span></div>
 <p class="sum">${esc(it.summary)}</p>
-${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change", it.change]].filter(([k, v]) => v && (SHOW_LAB_DETAILS || k === "question")).length ? `<dl>${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change", it.change]].filter(([k, v]) => v && (SHOW_LAB_DETAILS || k === "question")).map(([k, v]) => `<div><dt>${esc(t.lab[k])}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : ""}
+${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change", it.change]].filter(([k, v]) => v && SHOW_LAB_DETAILS).length ? `<dl>${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change", it.change]].filter(([k, v]) => v && SHOW_LAB_DETAILS).map(([k, v]) => `<div><dt>${esc(t.lab[k])}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : ""}
 <p class="go"><a href="${it.href}"${ext}>${esc(it.external ? t.lab.openExt : t.lab.open)}</a></p>
 </article>`;
     })
