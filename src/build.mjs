@@ -131,7 +131,7 @@ function caseCard(lang, key, idx, brief = false) {
 ${hasCover ? `<img src="/${coverRel}" alt="${esc(c.title)}" width="1200" height="1500" loading="lazy" decoding="async">` : `<span class="tags">${esc(c.year)}</span>
 <span class="name">${esc(c.title)}</span>`}
 </div>
-<div class="info"><span class="y">${esc(c.tags)}</span><span class="t">${esc(c.sub)}</span>${brief ? "" : `<span class="s">${esc(c.summary)}</span>`}</div>
+<div class="info"><span class="y">${esc(c.tags)}</span><span class="t">${esc(c.sub)}</span><span class="s">${esc(brief ? c.short || c.summary : c.summary)}</span></div>
 </a>`;
 }
 
@@ -170,6 +170,7 @@ ${t.home.labP ? `<p class="lede">${esc(t.home.labP)}</p>` : ""}
 </div></div></section>
 <section class="section"><div class="wrap brand-strip">
 <div><p class="eyebrow">${esc(t.home.brandKicker)}</p><h2 class="h2" style="margin-top:14px">${esc(t.home.brandH)}</h2>
+<p class="lede" style="margin-top:14px;color:var(--muted)">${esc(t.home.brandHP)}</p>
 <div class="actions"><a class="btn ghost" href="/${lang}/brand/">${esc(t.home.brandCta)} →</a></div></div>
 ${brandThumbs(lang)}
 </div></section>`,

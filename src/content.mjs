@@ -31,10 +31,11 @@ export const T = {
       all: "See all",
       labKicker: "Lab",
       labH: "Experiments with AI.",
-      labP: "",
+      labP: "Things I build and test to understand how to design with AI.",
       labCta: "Open the Lab",
       brandKicker: "Brand",
       brandH: "I also do brand work.",
+      brandHP: "Identities for hotels, restaurants and residential developments.",
       brandCta: "See brand work",
     },
     product: {
@@ -149,6 +150,7 @@ export const T = {
         year: "2026",
         meta: { role: "Product Designer", year: "2026 · 2 months", focus: "Responsive web app, design system", status: "Delivered in high fidelity, not yet launched" },
         summary: "Redesign of a client portal around its most frequent user: the accountant on the client's finance team.",
+        short: "Designed around the person who uses it every day: the client's accountant.",
         intro:
           "Brel is a Mexican boutique leasing company with more than 15 years of operation. Its premium positioning wasn't reflected in its client portal. The goal was to redesign the platform around its main user, rebuild the information architecture around tasks and raise the visual quality.",
         introImg: "brel-intro.webp",
@@ -219,6 +221,7 @@ export const T = {
         year: "2025",
         meta: { role: "Product Designer", year: "2025 · about 6 months", focus: "Mobile-first, design system", status: "Full design delivered; priorities changed before launch" },
         summary: "A mobile-first redesign that gives test results a clear next step so people have a reason to come back.",
+        short: "Test results that point to a clear next step.",
         intro:
           "Innerly users received test results but had no clear next step, which gave the business little reason to bring them back. I redesigned the experience mobile-first and added Courses as the MVP's new piece.",
         sections: [
@@ -300,6 +303,7 @@ export const T = {
           team: "Cindy Lozada (Lead Designer), Karla López (Design Systems), Rosario Flores (Branding)",
         },
         summary: "A multi-company, role-based platform designed on top of an existing design system and an almost frozen backend.",
+        short: "Multi-company and role-based, built on an almost frozen backend.",
         intro:
           "Nea is a corporate platform and card for finance teams, later extended to transport companies with large fleets, daily routes and decentralized operations. My work covered the web platform's design on top of an existing design system.",
         introImg: "nea-intro.webp",
@@ -387,10 +391,11 @@ export const T = {
       all: "Ver todo",
       labKicker: "Lab",
       labH: "Experimentos con IA.",
-      labP: "",
+      labP: "Cosas que construyo y pruebo para entender cómo diseñar con IA.",
       labCta: "Abrir el Lab",
       brandKicker: "Marca",
       brandH: "También hago marca.",
+      brandHP: "Identidades para hoteles, restaurantes y desarrollos residenciales.",
       brandCta: "Ver trabajo de marca",
     },
     product: {
@@ -401,6 +406,7 @@ export const T = {
       p: "Tres casos en fintech y desarrollo personal. Cada uno cuenta el problema, las restricciones, las decisiones que tomé y lo que haría distinto.",
       brandKicker: "También",
       brandH: "También hago marca.",
+      brandHP: "Identidades para hoteles, restaurantes y desarrollos residenciales.",
       brandP: "Identidades y sistemas visuales para hospitalidad y bienes raíces, desde antes y junto con producto.",
       brandCta: "Ver trabajo de marca",
       next: "Siguiente caso",
@@ -504,6 +510,7 @@ export const T = {
         year: "2026",
         meta: { role: "Product Designer", year: "2026 · 2 meses", focus: "Aplicación web responsiva, sistema de diseño", status: "Entregado en alta fidelidad, aún sin lanzamiento" },
         summary: "Rediseño de un portal de clientes alrededor de su usuaria más frecuente: la contadora del equipo financiero del cliente.",
+        short: "Diseñado para quien lo usa a diario: la contadora del cliente.",
         intro:
           "Brel es una arrendadora boutique mexicana con más de 15 años de operación. Su posicionamiento premium no se reflejaba en su portal de clientes. El objetivo fue rediseñar la plataforma alrededor de su usuario principal, reconstruir la arquitectura de información según las tareas y elevar la calidad visual.",
         introImg: "brel-intro.webp",
@@ -574,6 +581,7 @@ export const T = {
         year: "2025",
         meta: { role: "Product Designer", year: "2025 · unos 6 meses", focus: "Mobile-first, sistema de diseño", status: "Diseño completo entregado; cambiaron las prioridades antes del lanzamiento" },
         summary: "Un rediseño mobile-first que da a los resultados de los tests un siguiente paso claro para que las personas tengan razones para volver.",
+        short: "Resultados de tests que dan un siguiente paso claro.",
         intro:
           "Quienes usaban Innerly recibían resultados de tests pero no tenían un siguiente paso claro, y el negocio tenía pocas razones para traerlos de vuelta. Rediseñé la experiencia mobile-first y sumé Cursos como la pieza nueva del MVP.",
         sections: [
@@ -655,6 +663,7 @@ export const T = {
           team: "Cindy Lozada (Lead Designer), Karla López (Design Systems), Rosario Flores (Branding)",
         },
         summary: "Una plataforma multiempresa y por roles, diseñada sobre un sistema de diseño existente y un backend casi congelado.",
+        short: "Multiempresa y por roles, sobre un backend casi congelado.",
         intro:
           "Nea es una plataforma corporativa y tarjeta para equipos de finanzas, que luego se extendió a empresas de transporte con grandes flotas, rutas diarias y operación descentralizada. Mi trabajo cubrió el diseño de la plataforma web sobre un sistema de diseño existente.",
         introImg: "nea-intro.webp",
