@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 <link rel="stylesheet" href="/assets/site.css?v=91859168">
-<link rel="stylesheet" href="/assets/art-library.css?v=c275aa1c">
+<link rel="stylesheet" href="/assets/art-library.css?v=1a0772b8">
 </head><body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="site-header"><div class="wrap">
@@ -66,7 +66,7 @@
 </dialog>
 <script>
 (function () {
-  var I = {"lang":"es","data":"/lab/art-library/data.json","hash":"#piezas","viewImage":"Ver imagen: ","whatHappened":"Qué pasaba","woman":"artista mujer","myPhoto":"Mi foto · ","allMuseums":"Todos los museos","loadError":"No se pudo cargar la biblioteca.","short":{"antiguo":"Antiguo","medieval":"Medieval","renacimiento":"Renacimiento","barroco":"Barroco","neoclasico":"Neoclasicismo","realismo":"Realismo","impresionismo":"Impresionismo","modernismo":"Modernismo","entreguerras":"Vanguardias","posguerra":"Posguerra","conceptual":"Conceptual","contemporaneo":"Contemporáneo"},era: function (n, t) { return "Época " + n + " de " + t; }, counts: function (a, p, m) { return a + " artistas · " + p + " periodos" + (m ? " · " + m + " piezas mías" : ""); }, results: function (n) { return n + " resultado" + (n === 1 ? "" : "s"); }, piecesCount: function (n, mu) { return n + " pieza" + (n === 1 ? "" : "s") + (mu ? " en " + mu : ""); }};
+  var I = {"lang":"es","data":"/lab/art-library/data.json","hash":"#piezas","viewImage":"Ver imagen: ","whatHappened":"Qué pasaba","woman":"artista mujer","myPhoto":"Mi foto · ","myHere":"Mis fotos de esta época","allMuseums":"Todos los museos","loadError":"No se pudo cargar la biblioteca.","short":{"antiguo":"Antiguo","medieval":"Medieval","renacimiento":"Renacimiento","barroco":"Barroco","neoclasico":"Neoclasicismo","realismo":"Realismo","impresionismo":"Impresionismo","modernismo":"Modernismo","entreguerras":"Vanguardias","posguerra":"Posguerra","conceptual":"Conceptual","contemporaneo":"Contemporáneo"},era: function (n, t) { return "Época " + n + " de " + t; }, counts: function (a, p, m) { return a + " artistas · " + p + " periodos" + (m ? " · " + m + " piezas mías" : ""); }, results: function (n) { return n + " resultado" + (n === 1 ? "" : "s"); }, piecesCount: function (n, mu) { return n + " pieza" + (n === 1 ? "" : "s") + (mu ? " en " + mu : ""); }};
   var LANG = I.lang;
   function U(u) { return u && u.charAt(0) !== "/" && !/^https?:/.test(u) ? "/lab/art-library/" + u : u; }
   function L(x) { return x && typeof x === "object" ? (x[LANG] || x.es || x.en || "") : (x || ""); }
@@ -89,6 +89,8 @@
   $("lb-x").addEventListener("click", function () { lb.close(); });
   lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
 
+  function showPiece(p) { show({ src: U(p.photo), alt: L(p.title), title: L(p.title), sub: L(p.artist) + (p.year ? " · " + L(p.year) : ""), museum: L(p.museum) + (p.city ? ", " + L(p.city) : ""), caption: L(p.note) }); }
+
   /* Regla + capítulos */
   var chapEls = {}, rulerBtns = {};
   function buildTimeline() {
@@ -109,6 +111,20 @@
       side.appendChild(el("span", "chap-range", c.range)); side.appendChild(el("span", "chap-n", I.era(cats.indexOf(c) + 1, cats.length))); side.appendChild(el("h2", "chap-name", c.name));
       if (c.context) { var cx = el("div", "chap-ctx"); cx.appendChild(el("span", "eyebrow", I.whatHappened)); cx.appendChild(el("p", null, c.context)); side.appendChild(cx); }
       var main = el("div");
+      var mp = pieces.filter(function (p) { return p.era === c.id; });
+      if (mp.length) {
+        var st = el("div", "mypics"); st.appendChild(el("h3", null, I.myHere));
+        var row = el("div", "mypics-row");
+        mp.forEach(function (p) {
+          var b = el("button", "mp"); b.type = "button"; b.dataset.s = norm([L(p.title), L(p.artist), L(p.museum), L(p.city)].join(" "));
+          var ph = el("div", "ph"); var im = document.createElement("img"); im.src = U(p.photo); im.alt = L(p.title) + " — " + L(p.artist); im.loading = "lazy"; if (p.pos) im.style.objectPosition = p.pos; ph.appendChild(im);
+          b.appendChild(ph); b.appendChild(el("div", "t", L(p.title))); b.appendChild(el("div", "a", L(p.artist) + (p.year ? " · " + L(p.year) : "")));
+          b.addEventListener("click", function () { showPiece(p); });
+          row.appendChild(b);
+        });
+        st.appendChild(row); main.appendChild(st);
+        rulerBtns[c.id].classList.add("has-mine");
+      }
       if (c.movements.length > 1) {
         var chips = el("div", "chips");
         c.movements.forEach(function (m) {
@@ -190,7 +206,7 @@
       b.appendChild(el("div", "a", L(p.artist) + (p.year ? " · " + L(p.year) : "")));
       var m = el("span", "m"); m.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4zm0 5.5A1.5 1.5 0 1 1 6 2.5a1.5 1.5 0 0 1 0 3z" fill="currentColor"/></svg>';
       m.appendChild(document.createTextNode(L(p.museum) + (p.city ? ", " + L(p.city) : ""))); b.appendChild(m);
-      b.addEventListener("click", function () { show({ src: U(p.photo), alt: L(p.title), title: L(p.title), sub: L(p.artist) + (p.year ? " · " + L(p.year) : ""), museum: L(p.museum) + (p.city ? ", " + L(p.city) : ""), caption: L(p.note) }); });
+      b.addEventListener("click", function () { showPiece(p); });
       grid.appendChild(b);
     });
   }
@@ -208,6 +224,10 @@
         });
         mv.hidden = mvVis === 0; vis += mvVis;
       });
+      var mpv = 0;
+      [].forEach.call(sec.querySelectorAll(".mp"), function (x) { var ok = !nq || x.dataset.s.indexOf(nq) > -1; x.hidden = !ok; if (ok) mpv++; });
+      var mps = sec.querySelector(".mypics"); if (mps) mps.hidden = mpv === 0;
+      vis += mpv;
       sec.hidden = vis === 0; rulerBtns[c.id].disabled = vis === 0; shown += vis;
     });
     $("none").hidden = shown > 0 || mode !== "time";

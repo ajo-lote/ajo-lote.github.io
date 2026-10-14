@@ -97,3 +97,17 @@
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ruler .ind, .ruler button, .ruler button::after, .ruler button .s, .chap, .chip, .artist, .chap-range { transition: none !important; } }
 .lib-search:focus, .lib-search:focus-visible { outline: none; border-color: var(--cempasuchil); box-shadow: 0 0 0 3px var(--cempasuchil); }
+  /* Mis fotos dentro de cada época (línea del tiempo) */
+  .mypics { margin-bottom: 34px; }
+  .mypics h3 { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .mypics h3::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--bugambilia); box-shadow: 0 0 0 1.5px var(--tinta); }
+  .mypics[hidden] { display: none; }
+  .mypics-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .mp { width: 150px; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+  .mp[hidden] { display: none; }
+  .mp .ph { aspect-ratio: 4 / 5; border-radius: 8px; overflow: hidden; background: var(--line); }
+  .mp .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .mp:hover .ph img { transform: scale(1.05); }
+  .mp .t { font-family: var(--serif); font-size: 16px; line-height: 1.15; margin-top: 8px; }
+  .mp .a { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .ruler button.has-mine .s::after { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--bugambilia); box-shadow: 0 0 0 1px var(--tinta); margin-left: 6px; vertical-align: middle; }

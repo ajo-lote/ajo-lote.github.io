@@ -450,7 +450,7 @@ const AL = {
     emptyH: "Aquí van mis piezas favoritas.", emptyP: "Cada una con mi foto, el museo donde la vi y por qué me gusta. Estoy preparando la primera tanda.",
     enlarged: "Imagen ampliada", close: "Cerrar",
     js: {
-      lang: "es", data: "/lab/art-library/data.json", hash: "#piezas", viewImage: "Ver imagen: ", whatHappened: "Qué pasaba", woman: "artista mujer", myPhoto: "Mi foto · ",
+      lang: "es", data: "/lab/art-library/data.json", hash: "#piezas", viewImage: "Ver imagen: ", whatHappened: "Qué pasaba", woman: "artista mujer", myPhoto: "Mi foto · ", myHere: "Mis fotos de esta época",
       allMuseums: "Todos los museos", loadError: "No se pudo cargar la biblioteca.",
       short: { antiguo: "Antiguo", medieval: "Medieval", renacimiento: "Renacimiento", barroco: "Barroco", neoclasico: "Neoclasicismo", realismo: "Realismo", impresionismo: "Impresionismo", modernismo: "Modernismo", entreguerras: "Vanguardias", posguerra: "Posguerra", conceptual: "Conceptual", contemporaneo: "Contemporáneo" },
     },
@@ -465,7 +465,7 @@ const AL = {
     emptyH: "My favorite pieces go here.", emptyP: "Each one with my photo, the museum where I saw it and why I like it. I'm preparing the first batch.",
     enlarged: "Enlarged image", close: "Close",
     js: {
-      lang: "en", data: "/lab/art-library/data.en.json", hash: "#pieces", viewImage: "View image: ", whatHappened: "What was happening", woman: "woman artist", myPhoto: "My photo · ",
+      lang: "en", data: "/lab/art-library/data.en.json", hash: "#pieces", viewImage: "View image: ", whatHappened: "What was happening", woman: "woman artist", myPhoto: "My photo · ", myHere: "My photos from this era",
       allMuseums: "All museums", loadError: "The library could not be loaded.",
       short: { antiguo: "Ancient", medieval: "Medieval", renacimiento: "Renaissance", barroco: "Baroque", neoclasico: "Neoclassicism", realismo: "Realism", impresionismo: "Impressionism", modernismo: "Modernism", entreguerras: "Avant-gardes", posguerra: "Post-war", conceptual: "Conceptual", contemporaneo: "Contemporary" },
     },
