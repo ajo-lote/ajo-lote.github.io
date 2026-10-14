@@ -241,7 +241,8 @@ body.case .site-header { border-bottom-color: #ececec; }
 .case .case-hero img, .case .figs img { width: 100%; height: auto; display: block; }
 .case .case-sec { display: block; border-top: 0; padding: clamp(28px, 4vw, 52px) 0; }
 .case .case-sec:first-of-type { margin-top: 0; }
-.case .case-sec .figs { display: grid; gap: clamp(12px, 2vw, 20px); margin-bottom: clamp(22px, 3vw, 34px); }
+.case .case-sec .figs { display: grid; gap: clamp(12px, 2vw, 20px); margin-top: clamp(22px, 3vw, 34px); }
+.case .case-sec .carousel { margin-top: clamp(22px, 3vw, 34px); }
 .case .case-sec figure img { border: 0; border-radius: 10px; }
 .case .case-sec .txt { max-width: 38em; }
 .case .case-sec .txt > * + * { margin-top: 1em; }
@@ -256,7 +257,7 @@ body.case .site-header { border-bottom-color: #ececec; }
 .case .carousel .track { display: flex; gap: 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-bottom: 0; border-radius: 10px; }
 .case .carousel .track::-webkit-scrollbar { display: none; }
 .case .carousel .track figure { flex: 0 0 100%; scroll-snap-align: start; }
-.case .car-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 14px 0 clamp(22px, 3vw, 34px); font-size: 13px; color: var(--muted); }
+.case .car-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
 .case .car-nav button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--tinta); background: transparent; color: var(--tinta); font-size: 16px; cursor: pointer; }
 .case .car-nav button:hover { background: var(--tinta); color: #fff; }
 

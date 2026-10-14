@@ -199,7 +199,7 @@ ${brandThumbs(lang)}
         const figsHtml = !figs ? "" : s.carousel && nImg > 1
           ? `<div class="carousel" data-carousel><div class="figs track" tabindex="0" aria-label="${esc(s.h)}">${figs}</div><div class="car-nav"><button type="button" data-dir="-1" aria-label="${lang === "es" ? "Anterior" : "Previous"}">←</button><span class="car-count" aria-live="polite">1 / ${nImg}</span><button type="button" data-dir="1" aria-label="${lang === "es" ? "Siguiente" : "Next"}">→</button></div></div>`
           : `<div class="figs">${figs}</div>`;
-        return `<section class="case-sec">${figsHtml}<div class="txt"><h2>${esc(s.h)}</h2>${paras}${list}</div></section>`;
+        return `<section class="case-sec"><div class="txt"><h2>${esc(s.h)}</h2>${paras}${list}</div>${figsHtml}</section>`;
       })
       .join("");
     const introU = c.introImg ? productImg(c.introImg) : null;
