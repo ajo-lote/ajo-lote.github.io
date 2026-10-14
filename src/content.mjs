@@ -219,7 +219,7 @@ export const T = {
         sub: "A self-knowledge platform",
         tags: "Personal development · Product design",
         year: "2025",
-        meta: { role: "Product Designer", year: "2025 · about 6 months", focus: "Mobile-first, design system", status: "Full design delivered; priorities changed before launch" },
+        meta: { role: "Product Designer", year: "2025 · 6 months", focus: "Mobile-first, design system", status: "Full design delivered; priorities changed before launch" },
         summary: "A mobile-first redesign that takes people from a test result to personal growth tools, so they have a reason to come back.",
         short: "From a test result to a personal growth path.",
         intro:
@@ -581,7 +581,7 @@ export const T = {
         sub: "Una plataforma de autoconocimiento",
         tags: "Desarrollo personal · Diseño de producto",
         year: "2025",
-        meta: { role: "Product Designer", year: "2025 · unos 6 meses", focus: "Mobile-first, sistema de diseño", status: "Diseño completo entregado; cambiaron las prioridades antes del lanzamiento" },
+        meta: { role: "Product Designer", year: "2025 · 6 meses", focus: "Mobile-first, sistema de diseño", status: "Diseño completo entregado; cambiaron las prioridades antes del lanzamiento" },
         summary: "Un rediseño mobile-first que lleva a las personas del resultado de un test a herramientas de desarrollo personal, para que tengan razones para volver.",
         short: "Del resultado de un test a un camino de desarrollo personal.",
         intro:
