@@ -140,9 +140,10 @@ function caseCard(lang, key, idx, brief = false) {
   const hasCover = exists(coverRel);
   const textOn = c.light ? "on-dark" : "";
   return `<a class="card" href="/${lang}/product/${key}/">
-<div class="art ${hasCover ? "has-img" : ""} ${textOn}" style="background:${c.color}">
-${hasCover ? `<img src="/${coverRel}" alt="${esc(c.title)}" width="1200" height="1500" loading="lazy" decoding="async">` : `<span class="tags">${esc(c.year)}</span>
-<span class="name">${esc(c.title)}</span>`}
+<div class="art ${hasCover ? "swap" : ""} ${textOn}" style="background:${c.color}">
+<span class="tags">${esc(c.year)}</span>
+<span class="name">${esc(c.title)}</span>
+${hasCover ? `<img src="/${coverRel}" alt="" width="1200" height="1500" loading="lazy" decoding="async">` : ""}
 </div>
 <div class="info"><span class="y">${esc(c.tags)}</span><span class="t">${esc(c.sub)}</span><span class="s">${esc(brief ? c.short || c.summary : c.summary)}</span></div>
 </a>`;

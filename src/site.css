@@ -378,3 +378,9 @@ input:focus, textarea:focus, select:focus, .lib-search:focus { outline: none; bo
 :root { --hdr: 72px; }
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--papel); }
 .section[id] { scroll-margin-top: calc(var(--hdr) + 24px); }
+
+/* Tarjetas con foto: por defecto el color con nombre y año; al pasar el cursor aparece la foto */
+.card .art.swap img { opacity: 0; transition: opacity .35s ease; }
+.card:hover .art.swap img, .card:focus-visible .art.swap img { opacity: 1; }
+@media (hover: none) { .card .art.swap img { display: none; } }
+@media (prefers-reduced-motion: reduce) { .card .art.swap img { transition: none; } }
