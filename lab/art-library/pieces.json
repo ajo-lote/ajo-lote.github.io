@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "id": "toilette",
+    "era": "impresionismo",
+    "title": { "es": "La Toilette", "en": "La Toilette" },
+    "artist": { "es": "Henri de Toulouse-Lautrec", "en": "Henri de Toulouse-Lautrec" },
+    "year": "1889",
+    "museum": { "es": "Musée d’Orsay", "en": "Musée d’Orsay" },
+    "city": { "es": "París", "en": "Paris" },
+    "photo": "img/mine/toulouse-lautrec-toilette.webp"
+  },
+  {
+    "id": "david",
+    "era": "renacimiento",
+    "title": { "es": "David", "en": "David" },
+    "artist": { "es": "Miguel Ángel", "en": "Michelangelo" },
+    "year": "1501–1504",
+    "museum": { "es": "Galleria dell’Accademia", "en": "Galleria dell’Accademia" },
+    "city": { "es": "Florencia", "en": "Florence" },
+    "photo": "img/mine/david-miguel-angel.webp",
+    "pos": "50% 22%"
+  },
+  {
+    "id": "van-gogh",
+    "era": "impresionismo",
+    "title": { "es": "Portrait de l’artiste (autorretrato)", "en": "Portrait de l’artiste (self-portrait)" },
+    "artist": { "es": "Vincent van Gogh", "en": "Vincent van Gogh" },
+    "year": "1889",
+    "museum": { "es": "Musée d’Orsay", "en": "Musée d’Orsay" },
+    "city": { "es": "París", "en": "Paris" },
+    "photo": "img/mine/van-gogh-autorretrato.webp"
+  },
+  {
+    "id": "victoria",
+    "era": "antiguo",
+    "title": { "es": "Victoria de Samotracia (Niké de Samotracia)", "en": "Winged Victory of Samothrace (Nike of Samothrace)" },
+    "artist": { "es": "Escultor griego anónimo", "en": "Anonymous Greek sculptor" },
+    "year": { "es": "c. 190 a. C.", "en": "c. 190 BC" },
+    "museum": { "es": "Louvre", "en": "Louvre" },
+    "city": { "es": "París (escalera Daru)", "en": "Paris (Daru staircase)" },
+    "photo": "img/mine/victoria-de-samotracia.webp"
+  }
+]

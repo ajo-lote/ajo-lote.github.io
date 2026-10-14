@@ -139,9 +139,9 @@
           if (a.woman) { var i = el("i", null, " ♀"); i.setAttribute("aria-label", I.woman); n.appendChild(i); }
           tx.appendChild(n); tx.appendChild(el("div", "w", a.work));
           if (a.note) tx.appendChild(el("p", "note", a.note));
-          var mine = pieces.filter(function (p) { return norm(p.artist) === norm(a.name); })[0];
+          var mine = pieces.filter(function (p) { return norm(L(p.artist)) === norm(a.name); })[0];
           if (mine) {
-            var tg = el("button", "mine", I.myPhoto + mine.museum); tg.type = "button";
+            var tg = el("button", "mine", I.myPhoto + L(mine.museum)); tg.type = "button";
             tg.addEventListener("click", function () { museum = ""; setMode("mine"); $("q").value = a.name; q = a.name; applyFilters(); });
             tx.appendChild(tg);
           }
@@ -171,7 +171,7 @@
   function buildPieces() {
     $("n-mine").textContent = pieces.length ? "(" + pieces.length + ")" : "";
     var grid = $("pieces"); grid.textContent = "";
-    var museums = {}; pieces.forEach(function (p) { museums[p.museum] = (museums[p.museum] || 0) + 1; });
+    var museums = {}; pieces.forEach(function (p) { var k = L(p.museum); museums[k] = (museums[k] || 0) + 1; });
     var mc = $("mchips"); mc.textContent = "";
     if (Object.keys(museums).length > 1) {
       var all = el("button", "chip", I.allMuseums); all.type = "button"; all.setAttribute("aria-pressed", museum ? "false" : "true");
@@ -184,13 +184,13 @@
     pieces.forEach(function (p) {
       var c = catById(p.era) || { color: "#999" };
       var b = el("button", "piece"); b.type = "button"; b.style.setProperty("--c", c.color);
-      b.dataset.s = norm([L(p.title), p.artist, p.museum, p.city].join(" ")); b.dataset.m = p.museum;
-      var ph = el("div", "ph"); var im = document.createElement("img"); im.src = U(p.photo); im.alt = L(p.title) + " — " + p.artist; im.loading = "lazy"; ph.appendChild(im);
+      b.dataset.s = norm([L(p.title), L(p.artist), L(p.museum), L(p.city)].join(" ")); b.dataset.m = L(p.museum);
+      var ph = el("div", "ph"); var im = document.createElement("img"); im.src = U(p.photo); im.alt = L(p.title) + " — " + L(p.artist); im.loading = "lazy"; if (p.pos) im.style.objectPosition = p.pos; ph.appendChild(im);
       b.appendChild(ph); b.appendChild(el("div", "t", L(p.title)));
-      b.appendChild(el("div", "a", p.artist + (p.year ? " · " + p.year : "")));
+      b.appendChild(el("div", "a", L(p.artist) + (p.year ? " · " + L(p.year) : "")));
       var m = el("span", "m"); m.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4zm0 5.5A1.5 1.5 0 1 1 6 2.5a1.5 1.5 0 0 1 0 3z" fill="currentColor"/></svg>';
-      m.appendChild(document.createTextNode(p.museum + (p.city ? ", " + p.city : ""))); b.appendChild(m);
-      b.addEventListener("click", function () { show({ src: U(p.photo), alt: L(p.title), title: L(p.title), sub: p.artist + (p.year ? " · " + p.year : ""), museum: p.museum + (p.city ? ", " + p.city : ""), caption: L(p.note) }); });
+      m.appendChild(document.createTextNode(L(p.museum) + (p.city ? ", " + L(p.city) : ""))); b.appendChild(m);
+      b.addEventListener("click", function () { show({ src: U(p.photo), alt: L(p.title), title: L(p.title), sub: L(p.artist) + (p.year ? " · " + L(p.year) : ""), museum: L(p.museum) + (p.city ? ", " + L(p.city) : ""), caption: L(p.note) }); });
       grid.appendChild(b);
     });
   }
