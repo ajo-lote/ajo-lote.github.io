@@ -402,7 +402,8 @@ export const T = {
           {
             h: "What I take from it",
             p: [
-              "Designing within hard constraints was the challenge: I used the front end to introduce multi-company support and budgets without touching the data models.",
+              "Nea changed a lot in three years: it went from a platform for finance teams to one that also runs the operations of transport companies. That leap was teamwork; I worked alongside the lead designer, the design systems team and the branding team, and every decision built on what the others had already made.",
+              "What I take from it is that constraints, even hard ones, don't stop a product from evolving when you design with them: without touching the backend, multi-company support and budgets were solved from the front end, with small, reusable changes.",
             ],
           },
         ],
@@ -803,7 +804,8 @@ export const T = {
           {
             h: "Lo que me llevo",
             p: [
-              "Diseñar dentro de restricciones duras fue el reto: usé el front end para introducir multiempresa y presupuestos sin tocar los modelos de datos.",
+              "Nea cambió mucho en tres años: pasó de ser una plataforma para equipos de finanzas a sostener también la operación de empresas de transporte. Ese salto fue trabajo de equipo; trabajé junto a la lead designer, el equipo de sistemas de diseño y el de marca, y cada decisión se apoyaba en lo que los demás ya habían construido.",
+              "Me quedo con que las restricciones, incluso las duras, no frenan la evolución de un producto cuando se diseña con ellas: sin tocar el backend, la multiempresa y los presupuestos se resolvieron desde el front end, con cambios pequeños y reutilizables.",
             ],
           },
         ],
