@@ -15,8 +15,8 @@
   .ruler-wrap { position: sticky; top: var(--hdr, 72px); z-index: 40; background: var(--papel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .ruler { position: relative; display: flex; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-left: var(--pad); scrollbar-width: none; max-width: 1240px; margin: 0 auto; padding: 0 var(--pad); }
   .ruler::-webkit-scrollbar { display: none; }
-  .ruler button { flex: 1 0 auto; min-width: 92px; background: none; border: 0; padding: 14px 10px 14px; cursor: pointer; text-align: left; font: inherit; color: var(--tinta); scroll-snap-align: start; position: relative; opacity: .5; transition: opacity .2s; }
-  .ruler button::after { content: ""; position: absolute; left: 10px; right: 14px; bottom: 0; height: 2px; background: var(--tinta); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+  .ruler button { flex: 1 0 auto; min-width: 92px; background: none; border: 0; padding: 16px 16px 16px; cursor: pointer; text-align: left; font: inherit; color: var(--tinta); scroll-snap-align: start; position: relative; opacity: .5; transition: opacity .2s; }
+  .ruler button::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 0; height: 2px; background: var(--tinta); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
   .ruler button .r { display: block; font-size: 11px; letter-spacing: .04em; color: var(--muted); white-space: nowrap; }
   .ruler button .s { display: inline; font-family: var(--serif); font-size: 16px; line-height: 1.3; white-space: nowrap;  }
   .ruler button:hover { opacity: .9; }

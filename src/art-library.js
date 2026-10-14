@@ -29,7 +29,7 @@
   function buildTimeline() {
     var ruler = $("ruler"), host = $("chaps");
     var ind = el("span", "ind"); ind.setAttribute("aria-hidden", "true"); ruler.appendChild(ind);
-    function moveInd(id) { var b = rulerBtns[id]; if (!b) return; ind.style.width = (b.offsetWidth - 14) + "px"; ind.style.transform = "translateX(" + (b.offsetLeft + 10) + "px)"; }
+    function moveInd(id) { var b = rulerBtns[id]; if (!b) return; ind.style.width = (b.offsetWidth - 32) + "px"; ind.style.transform = "translateX(" + (b.offsetLeft + 16) + "px)"; }
     window.addEventListener("resize", function () { var cur = ruler.querySelector('[aria-current="true"]'); if (cur) { var k = Object.keys(rulerBtns).filter(function (x) { return rulerBtns[x] === cur; })[0]; moveInd(k); } });
     cats.forEach(function (c) {
       var b = el("button"); b.type = "button"; b.style.setProperty("--c", c.color);
