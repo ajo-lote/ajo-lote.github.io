@@ -319,11 +319,11 @@ export const T = {
           {
             h: "Constraints and design principles",
             list: [
-              "No room to change models, endpoints or business rules; new logic had to live in the front end.",
+              "Multi-company support as a critical need.",
+              "Three roles (admin, cardholder and observer) needing different views of the same entities.",
               "A small engineering team, so changes had to be incremental and reusable.",
               "Mobile support, since many users work on the road.",
-              "Several roles (admin, accounting, operators, cardholders) needing different views of the same entities.",
-              "Multi-company support as a critical need, with no native data model for it.",
+              "No room to change models, endpoints or business rules; new logic had to live in the front end.",
             ],
             p2: [
               "Within that room, three principles guided the design: simplify for non-technical users, differentiate experiences by role and build new logic on the existing infrastructure.",
@@ -721,11 +721,11 @@ export const T = {
           {
             h: "Restricciones y principios de diseño",
             list: [
-              "No había margen para cambiar modelos, endpoints ni reglas de negocio; la lógica nueva tenía que vivir en el front end.",
+              "Multiempresa como necesidad crítica.",
+              "3 roles (administrador, tarjetahabiente y observador) que necesitan vistas distintas de las mismas entidades.",
               "Un equipo de ingeniería pequeño, así que los cambios debían ser incrementales y reutilizables.",
               "Soporte móvil, porque muchos usuarios trabajan en carretera.",
-              "Varios roles (admin, contabilidad, operadores, tarjetahabientes) que necesitan vistas distintas de las mismas entidades.",
-              "Multiempresa como necesidad crítica, sin modelo de datos nativo para ello.",
+              "No había margen para cambiar modelos, endpoints ni reglas de negocio; la lógica nueva tenía que vivir en el front end.",
             ],
             p2: [
               "Con ese margen, tres principios guiaron el diseño: simplificar para usuarios no técnicos, diferenciar las experiencias por rol y construir la lógica nueva sobre la infraestructura existente.",
