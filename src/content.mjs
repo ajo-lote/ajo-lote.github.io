@@ -206,6 +206,7 @@ export const T = {
             h: "What I take from it",
             p: [
               "The project started with one question: who uses the portal every day, and for what. I designed the hierarchy around the accountant, not around the client's org chart.",
+              "If I did it again, I'd validate the architecture with real accountants before building the full system, and define from the start how to measure adoption and task completion.",
             ],
           },
         ],
@@ -566,6 +567,7 @@ export const T = {
             h: "Lo que me llevo",
             p: [
               "El proyecto partió de una pregunta: quién usa el portal a diario y para qué. Diseñé la jerarquía alrededor de la contadora, no del organigrama del cliente.",
+              "Si lo repitiera, validaría la arquitectura con contadoras reales antes de construir el sistema completo, y definiría desde el inicio cómo medir adopción y tareas terminadas.",
             ],
           },
         ],
