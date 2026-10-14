@@ -118,7 +118,7 @@ function page({ lang, rel, active, title, desc, body, noindex, cls }) {
 const SHOW_PROTOTYPES = false;
 
 // ---------- Components
-function caseCard(lang, key, idx) {
+function caseCard(lang, key, idx, brief = false) {
   const c = T[lang].cases[key];
   // Portada vertical opcional: uploads/product/cover-<key>.webp (4:5, ej. 1200x1500). Sin ella: color sólido.
   const coverRel = `uploads/product/cover-${key}.webp`;
@@ -129,7 +129,7 @@ function caseCard(lang, key, idx) {
 ${hasCover ? `<img src="/${coverRel}" alt="${esc(c.title)}" width="1200" height="1500" loading="lazy" decoding="async">` : `<span class="tags">${esc(c.year)}</span>
 <span class="name">${esc(c.title)}</span>`}
 </div>
-<div class="info"><span class="y">${esc(c.tags)}</span><span class="t">${esc(c.sub)}</span><span class="s">${esc(c.summary)}</span></div>
+<div class="info"><span class="y">${esc(c.tags)}</span><span class="t">${esc(c.sub)}</span>${brief ? "" : `<span class="s">${esc(c.summary)}</span>`}</div>
 </a>`;
 }
 
@@ -158,12 +158,12 @@ for (const lang of LANGS) {
 </div></section>
 <section class="section"><div class="wrap">
 <div class="sec-head"><h2 class="h2">${esc(t.home.selected)}</h2><a class="link-arrow" href="/${lang}/product/">${esc(t.home.all)} →</a></div>
-<div class="cards">${CASE_ORDER.map((k, i) => caseCard(lang, k, i)).join("")}</div>
+<div class="cards">${CASE_ORDER.map((k, i) => caseCard(lang, k, i, true)).join("")}</div>
 </div></section>
 <section class="section"><div class="wrap"><div class="band lab">
 <p class="eyebrow" style="color:inherit">${esc(t.home.labKicker)}</p>
 <h2 class="h2" style="margin-top:14px">${esc(t.home.labH)}</h2>
-<p class="lede">${esc(t.home.labP)}</p>
+${t.home.labP ? `<p class="lede">${esc(t.home.labP)}</p>` : ""}
 <div class="actions"><a class="btn solid" href="/${lang}/lab/">${esc(t.home.labCta)} →</a></div>
 </div></div></section>
 <section class="section"><div class="wrap brand-strip">
@@ -185,7 +185,7 @@ ${brandThumbs(lang)}
 <section class="section"><div class="wrap"><div class="band lab">
 <p class="eyebrow" style="color:inherit">${esc(t.home.labKicker)}</p>
 <h2 class="h2" style="margin-top:14px">${esc(t.home.labH)}</h2>
-<p class="lede">${esc(t.home.labP)}</p>
+${t.home.labP ? `<p class="lede">${esc(t.home.labP)}</p>` : ""}
 <div class="actions"><a class="btn solid" href="/${lang}/lab/">${esc(t.home.labCta)} →</a></div>
 </div></div></section>
 <section class="section"><div class="wrap brand-strip">
