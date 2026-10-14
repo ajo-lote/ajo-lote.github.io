@@ -336,6 +336,7 @@ export const T = {
             p: [
               "A persistent company selector switches the context of the whole platform while keeping the current module, filters and views.",
             ],
+            carousel: true,
             img: ["nea-company-1.webp", "nea-company-2.webp"],
           },
           {
@@ -385,9 +386,9 @@ export const T = {
             img: ["nea-transactions-3.webp"],
           },
           {
-            h: "Design system",
+            h: "Users",
             p: [
-              "Unified form and state patterns, table and hierarchy variants, subtle role accents and mobile-first components for field use, with fewer one-off styles.",
+              "Adding a user happens in a side drawer over the list. On desktop it keeps the context in view; on mobile the same pattern adapts to the screen width, which helps the responsive side without designing a separate flow.",
             ],
             img: ["nea-system.webp"],
           },
@@ -736,6 +737,7 @@ export const T = {
             p: [
               "Un selector de empresa persistente cambia el contexto de toda la plataforma y conserva el módulo, los filtros y las vistas actuales.",
             ],
+            carousel: true,
             img: ["nea-company-1.webp", "nea-company-2.webp"],
           },
           {
@@ -785,9 +787,9 @@ export const T = {
             img: ["nea-transactions-3.webp"],
           },
           {
-            h: "Sistema de diseño",
+            h: "Usuarios",
             p: [
-              "Patrones unificados de formularios y estados, variantes de tablas y jerarquías, acentos sutiles por rol y componentes mobile-first para uso en campo, con menos estilos aislados.",
+              "Añadir un usuario ocurre en un drawer lateral sobre la lista. En escritorio mantiene el contexto a la vista; en móvil el mismo patrón se adapta al ancho de la pantalla, lo que ayuda a resolver lo responsivo sin diseñar un flujo aparte.",
             ],
             img: ["nea-system.webp"],
           },
