@@ -345,7 +345,7 @@ export const T = {
               "Modeled as a hierarchy: Company → Area → Operator or Team → Card. The creation flow covers basic setup, rules and permissions, members, duration and recurrence, and a final review on mobile and desktop. The detail view shows available versus spent, category breakdowns, members, linked transactions and controlled adjustments.",
             ],
             carousel: true,
-            img: ["nea-budgets-1.webp", "nea-budgets-3.webp", "nea-budgets-2.webp"],
+            img: ["nea-budgets-1.webp", "nea-budgets-2.webp", "nea-budgets-3.webp"],
           },
           {
             h: "Transactions",
@@ -717,7 +717,7 @@ export const T = {
               "Modelados como una jerarquía: Empresa → Área → Operador o Equipo → Tarjeta. El flujo de creación cubre configuración básica, reglas y permisos, integrantes, duración y recurrencia, y una revisión final en móvil y escritorio. La vista de detalle muestra disponible contra gastado, desglose por categoría, integrantes, movimientos vinculados y ajustes controlados.",
             ],
             carousel: true,
-            img: ["nea-budgets-1.webp", "nea-budgets-3.webp", "nea-budgets-2.webp"],
+            img: ["nea-budgets-1.webp", "nea-budgets-2.webp", "nea-budgets-3.webp"],
           },
           {
             h: "Movimientos",
