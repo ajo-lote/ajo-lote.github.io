@@ -346,7 +346,7 @@ ${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change",
     var els = [].slice.call(document.querySelectorAll("[data-reveal]"));
     var groups = els.map(function (el) {
       var words = [];
-      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentNode.closest && n.parentNode.closest(".h1-sub") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } });
       var nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
       nodes.forEach(function (n) {
         var parts = n.textContent.split(/(\\s+)/), frag = document.createDocumentFragment();
