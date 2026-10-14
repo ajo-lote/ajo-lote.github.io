@@ -119,7 +119,7 @@ export const T = {
       museumsLink: "I turned that into a guide to art history →",
       natureLine: "Everyday landscapes and nature inspire me.",
       expH: "10+ years in design, 5 in digital product.<span class=\"h1-sub\">My focus: constant attention to how a tool accompanies the person using it.</span>",
-      p3: "Before product, I spent years in brand and agency work, creating identities, websites and communication for hospitality and real estate. That stage left me with an eye for identity and a care for first impressions: how a product feels from the moment you arrive.",
+      p3: "Before product, I spent years at marketing agencies, creating identities, websites and communication for hospitality and real estate. That stage left me with a solid foundation in design (hierarchy, harmony, composition) and a care for first impressions.",
       brandLink: "See my brand work →",
       toolkitH: "Toolkit",
       toolkit: [
@@ -479,7 +479,7 @@ export const T = {
       museumsLink: "Lo convertí en una guía de historia del arte →",
       natureLine: "Me inspiran los paisajes cotidianos y la naturaleza.",
       expH: "+10 años en diseño, 5 en producto digital.<span class=\"h1-sub\">Mi enfoque: una atención constante a cómo una herramienta acompaña a quien la usa.</span>",
-      p3: "Antes de producto trabajé años en marca y agencia, creando identidades, sitios web y comunicación para hospitalidad y bienes raíces. De esa etapa me quedó el ojo para la identidad y el cuidado por la primera impresión: cómo se siente un producto desde que llegas.",
+      p3: "Antes de producto trabajé años en agencias de marketing, creando identidades, sitios web y comunicación para hospitalidad y bienes raíces. De esa etapa me quedó una base sólida de diseño (jerarquía, armonía, composición) y el cuidado por la primera impresión.",
       brandLink: "Ver mi trabajo de marca →",
       toolkitH: "Toolkit",
       toolkit: [
