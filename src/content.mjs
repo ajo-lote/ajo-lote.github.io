@@ -342,25 +342,10 @@ export const T = {
           {
             h: "Budgets",
             p: [
-              "Modeled as a hierarchy: Company → Area → Operator or Team → Card.",
+              "Modeled as a hierarchy: Company → Area → Operator or Team → Card. The creation flow covers basic setup, rules and permissions, members, duration and recurrence, and a final review on mobile and desktop. The detail view shows available versus spent, category breakdowns, members, linked transactions and controlled adjustments.",
             ],
-            img: ["nea-budgets-1.webp"],
-          },
-          {
-            h: "Creation flow",
-            sub: true,
-            p: [
-              "Covers basic setup, rules and permissions, members, duration and recurrence, and a final review on mobile and desktop.",
-            ],
-            img: ["nea-budgets-3.webp"],
-          },
-          {
-            h: "Budget view",
-            sub: true,
-            p: [
-              "The detail view shows available versus spent, category breakdowns, members, linked transactions and controlled adjustments.",
-            ],
-            img: ["nea-budgets-2.webp"],
+            carousel: true,
+            img: ["nea-budgets-1.webp", "nea-budgets-3.webp", "nea-budgets-2.webp"],
           },
           {
             h: "Transactions",
@@ -744,25 +729,10 @@ export const T = {
           {
             h: "Presupuestos",
             p: [
-              "Modelados como una jerarquía: Empresa → Área → Operador o Equipo → Tarjeta.",
+              "Modelados como una jerarquía: Empresa → Área → Operador o Equipo → Tarjeta. El flujo de creación cubre configuración básica, reglas y permisos, integrantes, duración y recurrencia, y una revisión final en móvil y escritorio. La vista de detalle muestra disponible contra gastado, desglose por categoría, integrantes, movimientos vinculados y ajustes controlados.",
             ],
-            img: ["nea-budgets-1.webp"],
-          },
-          {
-            h: "Flujo de creación",
-            sub: true,
-            p: [
-              "Cubre configuración básica, reglas y permisos, integrantes, duración y recurrencia, y una revisión final en móvil y escritorio.",
-            ],
-            img: ["nea-budgets-3.webp"],
-          },
-          {
-            h: "Vista de presupuesto",
-            sub: true,
-            p: [
-              "El detalle muestra disponible contra gastado, desglose por categoría, integrantes, movimientos vinculados y ajustes controlados.",
-            ],
-            img: ["nea-budgets-2.webp"],
+            carousel: true,
+            img: ["nea-budgets-1.webp", "nea-budgets-3.webp", "nea-budgets-2.webp"],
           },
           {
             h: "Movimientos",
