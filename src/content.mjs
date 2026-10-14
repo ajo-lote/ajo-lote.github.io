@@ -300,7 +300,7 @@ export const T = {
         meta: {
           role: "Product Designer",
           year: "2021–2024",
-          focus: "Web platform, design system",
+          focus: "Web platform",
           team: "Cindy Lozada (Lead Designer), Karla López (Design Systems), Rosario Flores (Branding)",
         },
         summary: "A multi-company, role-based platform designed on top of an existing design system and an almost frozen backend.",
@@ -700,7 +700,7 @@ export const T = {
         meta: {
           role: "Product Designer",
           year: "2021–2024",
-          focus: "Plataforma web, sistema de diseño",
+          focus: "Plataforma web",
           team: "Cindy Lozada (Lead Designer), Karla López (Design Systems), Rosario Flores (Branding)",
         },
         summary: "Una plataforma multiempresa y por roles, diseñada sobre un sistema de diseño existente y un backend casi congelado.",
