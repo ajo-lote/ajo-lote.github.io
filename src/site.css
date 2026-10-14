@@ -371,3 +371,8 @@ input:focus, textarea:focus, select:focus, .lib-search:focus { outline: none; bo
 .case .case-sec.sub { padding-top: 0; }
 .case .case-sec.sub h2 { font-size: clamp(20px, 2.1vw, 26px); }
 .case .case-sec .txt ul.list + p { margin-top: 1.2em; }
+
+/* Menú fijo (sticky). --hdr = alto real del encabezado, medido por script */
+:root { --hdr: 72px; }
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--papel); }
+.section[id] { scroll-margin-top: calc(var(--hdr) + 24px); }

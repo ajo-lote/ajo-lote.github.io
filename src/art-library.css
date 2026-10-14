@@ -12,7 +12,7 @@
   .lib-search::placeholder { color: var(--muted); }
 
   /* Regla del tiempo */
-  .ruler-wrap { position: sticky; top: 0; z-index: 20; background: var(--papel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .ruler-wrap { position: sticky; top: var(--hdr, 72px); z-index: 40; background: var(--papel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .ruler { position: relative; display: flex; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-left: var(--pad); scrollbar-width: none; max-width: 1240px; margin: 0 auto; padding: 0 var(--pad); }
   .ruler::-webkit-scrollbar { display: none; }
   .ruler button { flex: 1 0 auto; min-width: 92px; background: none; border: 0; padding: 14px 10px 14px; cursor: pointer; text-align: left; font: inherit; color: var(--tinta); scroll-snap-align: start; position: relative; opacity: .5; transition: opacity .2s; }
@@ -29,9 +29,9 @@
   .ruler .ind { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--cempasuchil); transform: translateX(0); transition: transform .35s cubic-bezier(.3,.7,.2,1), width .35s cubic-bezier(.3,.7,.2,1); pointer-events: none; }
 
   /* Capítulos */
-  .chap { background: var(--papel); scroll-margin-top: 64px; border-bottom: 1px solid var(--line); }
+  .chap { background: var(--papel); scroll-margin-top: calc(var(--hdr, 72px) + 64px); border-bottom: 1px solid var(--line); }
   .chap-in { max-width: 1240px; margin: 0 auto; padding: clamp(40px, 7vw, 96px) var(--pad); display: grid; grid-template-columns: minmax(280px, 1fr) 2fr; gap: clamp(24px, 5vw, 80px); }
-  .chap-side { position: sticky; top: 92px; align-self: start; }
+  .chap-side { position: sticky; top: calc(var(--hdr, 72px) + 92px); align-self: start; }
   .chap-range { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; padding: 5px 12px; border-radius: 999px; background: transparent; color: var(--tinta); border: 1.5px solid var(--tinta); transition: background-color .4s, border-color .4s; }
   .chap.is-active .chap-range { background: var(--cempasuchil); border-color: var(--cempasuchil); }
   .chap-n { display: block; margin-top: 14px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }

@@ -14,10 +14,19 @@ const missing = new Set();
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const slugify = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+// Enlaces externos siempre en pestaña nueva (se aplica a todo el HTML generado).
+const externalLinks = (html) =>
+  html.replace(/<a\b([^>]*?)\shref="(https?:\/\/[^"]+)"([^>]*)>/g, (m, a, url, b) => {
+    if (url.startsWith(SITE.domain)) return m;
+    const rest = `${a} ${b}`.replace(/\s(target|rel)="[^"]*"/g, "");
+    return `<a${rest} href="${url}" target="_blank" rel="noopener noreferrer">`;
+  });
+const MAIL_SUBJECT = { es: "Hola Diana, vi tu portafolio", en: "Hi Diana, I saw your portfolio" };
+const mailto = (lang) => `mailto:${SITE.email}?subject=${encodeURIComponent(MAIL_SUBJECT[lang])}`;
 const write = (rel, html) => {
   const f = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(f), { recursive: true });
-  fs.writeFileSync(f, html);
+  fs.writeFileSync(f, rel.endsWith(".html") ? externalLinks(html) : html);
 };
 const exists = (rel) => fs.existsSync(path.join(ROOT, rel));
 const productImg = (name) => {
@@ -97,6 +106,7 @@ function header(lang, active, cls = "") {
 <a class="brand" href="/${lang}/">Diana <em>Becerra</em></a>
 <nav class="nav" aria-label="Main">${links}<a class="lang" href="__ALT__" hreflang="${other}" lang="${other}" aria-label="${other === "es" ? "Español" : "English"}">${t.switchTo}</a></nav>
 </div></header>
+<script>(function(){var h=document.querySelector(".site-header");function s(){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px")}s();addEventListener("resize",s);addEventListener("load",s)})()</script>
 <main id="main">`;
 }
 
@@ -105,7 +115,7 @@ function footer(lang) {
   return `</main>
 <footer class="site-footer"><div class="wrap">
 <span>${esc(t.footer.rights)} · ${esc(t.footer.loc)}</span>
-<span><a href="${SITE.linkedin}" rel="noopener">LinkedIn</a> · <a href="${SITE.dribbble}" rel="noopener">Dribbble</a> · <a href="mailto:${SITE.email}">${esc(SITE.email)}</a></span>
+<span><a href="${SITE.linkedin}" rel="noopener">LinkedIn</a> · <a href="${SITE.dribbble}" rel="noopener">Dribbble</a> · <a href="${mailto(lang)}">${esc(SITE.email)}</a></span>
 </div></footer>
 </body>
 </html>`;
@@ -370,7 +380,7 @@ ${[["question", it.question], ["decided", it.decided], ["ai", it.ai], ["change",
 <p class="lede">${esc(c.p)}</p>
 </div></section>
 <section class="section" style="padding-top:0;border-top:0"><div class="wrap">
-<a class="mail" href="mailto:${SITE.email}">${esc(SITE.email)} <span aria-hidden="true">↗</span></a>
+<a class="mail" href="${mailto(lang)}">${esc(SITE.email)} <span aria-hidden="true">↗</span></a>
 <div class="social"><a href="${SITE.linkedin}" rel="noopener">LinkedIn ↗</a><a href="${SITE.dribbble}" rel="noopener">Dribbble ↗</a><a href="${SITE.instagram}" rel="noopener">Instagram ↗</a></div>
 </div></section>`,
   });
