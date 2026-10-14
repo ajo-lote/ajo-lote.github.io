@@ -229,14 +229,14 @@ export const T = {
           {
             h: "Research",
             p: [
-              "I reviewed wellness and psychology apps for navigation, progress and tone patterns, and ran AI-assisted interviews. Three patterns kept showing up: dashboards that point to an action, light ongoing progress, and no rigid metrics that create anxiety.",
+              "To nurture the platform beyond adding more tests, I reviewed wellness and psychology apps for navigation, progress and tone patterns, and ran AI-assisted interviews. Three patterns kept showing up: dashboards that point to an action, light ongoing progress, and no rigid metrics that create anxiety.",
             ],
             img: ["innerly-03-architecture.webp"],
           },
           {
             h: "Decisions",
             p: [
-              "The MVP would improve the existing experience and add Courses. Most traffic was mobile, so the redesign went mobile-first and was governed by a design system, aiming for fewer screens and clearer direction.",
+              "The MVP would improve the existing experience and add tools that turn the reflection from a test into ongoing growth: courses and affirmations. Most traffic was mobile, so the redesign went mobile-first and was governed by a design system, aiming for fewer screens and clearer direction.",
             ],
             img: ["innerly-overview.webp"],
           },
@@ -264,7 +264,7 @@ export const T = {
           {
             h: "What got cut",
             p: [
-              "A larger concept, including meditation audio personalized with ElevenLabs, was scaled back because of budget and team scope. Affirmations shipped in the design because they were the easiest to build.",
+              "A broader set of tools, including meditation audio personalized with ElevenLabs, was scaled back because of budget and team scope. Affirmations shipped in the design because they were the easiest to build.",
             ],
             img: ["innerly-08-affirmations.webp"],
           },
@@ -278,7 +278,7 @@ export const T = {
           {
             h: "Where it stands",
             p: [
-              "The product didn't reach production because priorities changed, but a full architecture and UI upgrade was delivered, ready for implementation.",
+              "The product didn't reach production because priorities changed, but a full architecture and UI upgrade was delivered, ready for implementation. The platform went from accumulating results to offering a path people can pick up again every day.",
             ],
             img: ["innerly-mockup.webp"],
           },
@@ -591,14 +591,14 @@ export const T = {
           {
             h: "Investigación",
             p: [
-              "Revisé apps de bienestar y psicología para ver patrones de navegación, progreso y tono, y realicé entrevistas asistidas por IA. Aparecieron tres patrones: dashboards que apuntan a una acción, progreso ligero y continuo, y ninguna métrica rígida que genere ansiedad.",
+              "Para nutrir la plataforma más allá de agregar tests, revisé apps de bienestar y psicología para ver patrones de navegación, progreso y tono, y realicé entrevistas asistidas por IA. Aparecieron tres patrones: dashboards que apuntan a una acción, progreso ligero y continuo, y ninguna métrica rígida que genere ansiedad.",
             ],
             img: ["innerly-03-architecture.webp"],
           },
           {
             h: "Decisiones",
             p: [
-              "El MVP mejoraría la experiencia existente y sumaría Cursos. La mayor parte del tráfico era móvil, así que el rediseño fue mobile-first y regido por un sistema de diseño, con menos pantallas y una dirección más clara.",
+              "El MVP mejoraría la experiencia existente y sumaría herramientas que convierten la reflexión de un test en crecimiento continuo: cursos y afirmaciones. La mayor parte del tráfico era móvil, así que el rediseño fue mobile-first y regido por un sistema de diseño, con menos pantallas y una dirección más clara.",
             ],
             img: ["innerly-overview.webp"],
           },
@@ -626,7 +626,7 @@ export const T = {
           {
             h: "Lo que se recortó",
             p: [
-              "Un concepto más grande, que incluía audio de meditación personalizado con ElevenLabs, se redujo por presupuesto y alcance del equipo. Las afirmaciones quedaron en el diseño porque eran lo más fácil de construir.",
+              "Un conjunto más amplio de herramientas, que incluía audio de meditación personalizado con ElevenLabs, se redujo por presupuesto y alcance del equipo. Las afirmaciones quedaron en el diseño porque eran lo más fácil de construir.",
             ],
             img: ["innerly-08-affirmations.webp"],
           },
@@ -640,7 +640,7 @@ export const T = {
           {
             h: "Estado actual",
             p: [
-              "El producto no llegó a producción porque cambiaron las prioridades, pero se entregó una actualización completa de arquitectura y UI, lista para implementarse.",
+              "El producto no llegó a producción porque cambiaron las prioridades, pero se entregó una actualización completa de arquitectura y UI, lista para implementarse. La plataforma pasó de acumular resultados a ofrecer un camino que se puede retomar cada día.",
             ],
             img: ["innerly-mockup.webp"],
           },
