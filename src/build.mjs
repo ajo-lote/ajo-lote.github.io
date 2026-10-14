@@ -73,7 +73,9 @@ ${alt}
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${SITE.domain}/${lang}${rel}">
 <meta property="og:locale" content="${lang === "es" ? "es_MX" : "en_US"}">
-<link rel="icon" type="image/png" href="/uploads/favicon-64.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/uploads/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/uploads/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -407,7 +409,9 @@ write(
 <link rel="alternate" hreflang="en" href="${SITE.domain}/en/">
 <link rel="alternate" hreflang="es" href="${SITE.domain}/es/">
 <link rel="alternate" hreflang="x-default" href="${SITE.domain}/en/">
-<link rel="icon" type="image/png" href="/uploads/favicon-64.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/uploads/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/site.css?v=${cssHash}">
 <script>
 try {
@@ -435,7 +439,9 @@ write(
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 — Diana Becerra</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="/uploads/favicon-64.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/uploads/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="/assets/site.css?v=${cssHash}">
 </head>
