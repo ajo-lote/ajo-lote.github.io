@@ -348,3 +348,7 @@ dialog.proj { width: min(960px, calc(100vw - 32px)); height: calc(100vh - 64px);
 /* Contacto: correo con jerarquía menor que el H1 */
 .mail { font-size: clamp(20px, 2.8vw, 32px); word-break: normal; overflow-wrap: anywhere; padding-bottom: 6px; }
 .mail span, .mail svg { font-size: .8em; }
+
+.section[id] { scroll-margin-top: 24px; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

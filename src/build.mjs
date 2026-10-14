@@ -89,7 +89,7 @@ function header(lang, active, cls = "") {
   const t = T[lang];
   const other = lang === "en" ? "es" : "en";
   const links = SECTIONS.map(
-    (s) => `<a href="/${lang}/${s}/"${active === s ? ' aria-current="page"' : ""}>${esc(t.nav[s])}</a>`
+    (s) => `<a href="${s === "product" ? `/${lang}/#projects` : `/${lang}/${s}/`}"${active === s ? ' aria-current="page"' : ""}>${esc(t.nav[s])}</a>`
   ).join("");
   return `<body${cls ? ` class="${cls}"` : ""}>
 <a class="skip" href="#main">${esc(t.skip)}</a>
@@ -159,10 +159,10 @@ for (const lang of LANGS) {
 <p class="eyebrow">${esc(t.role)}</p>
 <h1 class="display">${t.home.h1}</h1>
 <p class="lede">${esc(t.home.sub)}</p>
-<div class="actions"><a class="btn solid" href="/${lang}/product/">${esc(t.home.ctaProduct)}</a><a class="btn ghost" href="/${lang}/lab/">${esc(t.home.ctaLab)}</a></div>
+<div class="actions"><a class="btn solid" href="/${lang}/#projects">${esc(t.home.ctaProduct)}</a><a class="btn ghost" href="/${lang}/lab/">${esc(t.home.ctaLab)}</a></div>
 </div></section>
-<section class="section"><div class="wrap">
-<div class="sec-head"><h2 class="h2">${esc(t.home.selected)}</h2><a class="link-arrow" href="/${lang}/product/">${esc(t.home.all)} →</a></div>
+<section class="section" id="projects"><div class="wrap">
+<div class="sec-head"><h2 class="h2">${esc(t.home.selected)}</h2></div>
 <div class="cards">${CASE_ORDER.map((k, i) => caseCard(lang, k, i, true)).join("")}</div>
 </div></section>
 <section class="section"><div class="wrap"><div class="band lab">
@@ -179,28 +179,8 @@ ${brandThumbs(lang)}
 </div></section>`,
   });
 
-  // Product index
-  page({
-    lang, rel: "/product/", active: "product", title: t.product.title, desc: t.product.desc,
-    body: `<section class="page-head"><div class="wrap">
-<p class="eyebrow">${esc(t.product.kicker)}</p>
-<h1 class="display">${t.product.h1}</h1>
-<p class="lede">${esc(t.product.p)}</p>
-</div></section>
-<section class="section" style="padding-top:0;border-top:0"><div class="wrap"><div class="cards">${CASE_ORDER.map((k, i) => caseCard(lang, k, i)).join("")}</div></div></section>
-<section class="section"><div class="wrap"><div class="band lab">
-<p class="eyebrow" style="color:inherit">${esc(t.home.labKicker)}</p>
-<h2 class="h2" style="margin-top:14px">${esc(t.home.labH)}</h2>
-${t.home.labP ? `<p class="lede">${esc(t.home.labP)}</p>` : ""}
-<div class="actions"><a class="btn solid" href="/${lang}/lab/">${esc(t.home.labCta)} →</a></div>
-</div></div></section>
-<section class="section"><div class="wrap brand-strip">
-<div><p class="eyebrow">${esc(t.product.brandKicker)}</p><h2 class="h2" style="margin-top:14px">${esc(t.product.brandH)}</h2>
-<p class="lede" style="margin-top:14px;color:var(--muted)">${esc(t.product.brandP)}</p>
-<div class="actions"><a class="btn ghost" href="/${lang}/brand/">${esc(t.product.brandCta)} →</a></div></div>
-${brandThumbs(lang)}
-</div></section>`,
-  });
+  // Product index: ya no existe como página; la lista de proyectos vive en el inicio (#projects)
+  write(`${lang}/product/index.html`, `<!doctype html><html lang="${t.htmlLang}"><head><meta charset="utf-8"><title>${esc(t.product.title)}</title><meta name="robots" content="noindex"><link rel="canonical" href="${SITE.domain}/${lang}/"><meta http-equiv="refresh" content="0;url=/${lang}/#projects"><script>location.replace("/${lang}/#projects");</script></head><body><a href="/${lang}/#projects">${esc(t.nav.product)}</a></body></html>\n`);
 
   // Case studies
   CASE_ORDER.forEach((key, i) => {
@@ -231,7 +211,7 @@ ${brandThumbs(lang)}
       lang, rel: `/product/${key}/`, active: "product",
       title: `${c.title} — ${c.sub} · Diana Becerra`, desc: c.summary,
       body: `<section class="page-head" style="padding-bottom:0"><div class="wrap">
-<p class="eyebrow"><a href="/${lang}/product/" style="text-decoration:none">${esc(t.product.back)}</a> &nbsp;·&nbsp; ${esc(c.tags)}</p>
+<p class="eyebrow"><a href="/${lang}/#projects" style="text-decoration:none">${esc(t.product.back)}</a> &nbsp;·&nbsp; ${esc(c.tags)}</p>
 <h1 class="display" style="margin-top:20px">${esc(c.title)}</h1>
 <p class="lede">${esc(c.sub)}</p>
 ${hero ? `<div class="case-hero" style="margin-top:36px">${pic(c.hero[0], c.title, { eager: true })}</div>` : `<div class="case-hero block ${c.light ? "on-dark" : ""}" style="background:${c.color};margin-top:36px"><span class="name">${esc(c.year)}</span></div>`}
@@ -275,7 +255,7 @@ ${hero ? `<div class="case-hero" style="margin-top:36px">${pic(c.hero[0], c.titl
   page({
     lang, rel: "/brand/", active: "product", title: t.brand.title, desc: t.brand.desc,
     body: `<section class="page-head"><div class="wrap">
-<p class="eyebrow"><a href="/${lang}/product/" style="text-decoration:none">${esc(t.brand.back)}</a> &nbsp;·&nbsp; ${esc(t.brand.kicker)}</p>
+<p class="eyebrow"><a href="/${lang}/#projects" style="text-decoration:none">${esc(t.brand.back)}</a> &nbsp;·&nbsp; ${esc(t.brand.kicker)}</p>
 <h1 class="display" style="margin-top:20px">${t.brand.h1}</h1>
 <p class="lede">${esc(t.brand.p)}</p>
 </div></section>
@@ -516,7 +496,7 @@ fs.writeFileSync(path.join(ROOT, "lab/art-library/index.html"), `<!doctype html>
 // robots + sitemap
 const urls = [];
 for (const lang of LANGS) {
-  for (const r of ["/", "/product/", ...CASE_ORDER.map((k) => `/product/${k}/`), "/brand/", "/lab/", "/about/", "/contact/"]) urls.push(`${SITE.domain}/${lang}${r}`);
+  for (const r of ["/", ...CASE_ORDER.map((k) => `/product/${k}/`), "/brand/", "/lab/", "/about/", "/contact/"]) urls.push(`${SITE.domain}/${lang}${r}`);
 }
 for (const lang of LANGS) urls.push(`${SITE.domain}/${lang}/lab/art-library/`);
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `<url><loc>${u}</loc></url>`).join("\n")}\n</urlset>\n`);
